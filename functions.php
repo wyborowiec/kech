@@ -2,26 +2,27 @@
 
 add_theme_support( 'post-thumbnails' ); 
 
-function add_post_type_article() {
+function add_post_types() {
     $args = array(
       'public' => true,
-      'label'  => 'Artykuły'
+      'label'  => 'Artykuły',
+	  'register_meta_box_cb' => 'add_kech_article_meta_boxes'
     );
     register_post_type( 'kech_article', $args );
-}
-add_action( 'init', 'add_post_type_article' );
-
-function add_post_type_bla() {
-    $args = array(
+	$args = array(
       'public' => true,
-      'label'  => 'BlaBla',
-	  'has_archive' => true,
-      'rewrite' => array('slug' => 'bla')
-
+      'label'  => 'Galerie'
     );
-    register_post_type( 'kechbla', $args );
+    register_post_type( 'kech_gallery', $args );
+	$args = array(
+      'public' => true,
+      'label'  => 'Wydarzenia',
+	  'register_meta_box_cb' => 'add_kech_event_meta_boxes'//,
+	  //'hierarchical' => true
+    );
+    register_post_type( 'kech_event', $args );
 }
-add_action( 'init', 'add_post_type_bla' );
+add_action( 'init', 'add_post_types' );
 
 function add_jQuery_libraries() {
 
@@ -59,23 +60,28 @@ function the_artist($id) {
 	echo $meta["artist"];
 }
 
+function add_kech_article_meta_boxes($post) {
+	add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'kech_article_meta_box_callback', 'kech_article' );
+}
+
+function add_kech_event_meta_boxes($post) {
+	add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'kech_event_meta_box_callback', 'kech_event' );
+}
+
 function prfx_custom_meta() {
 	global $post;
-	$cats = wp_get_post_categories( $post -> ID);
-	$cat = get_category( $cats[0] );
-	if ($cat->slug == 'wydarzenia'){
-		add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'prfx_meta_callback', 'page' );
-	} elseif ($cat->slug == 'kazania'){
-		add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'kazania_meta_callback', 'attachment' );
-	} elseif ($cat->slug == 'czytelnia'){
-		add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'czytelnia_meta_callback', 'page' );
-	} elseif ($post -> post_type == 'kech_article'){
-		add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'czytelnia_meta_callback', 'kech_article' );
+	if ($post->post_type == 'attachment') {
+		$cats = wp_get_post_categories( $post -> ID);
+		$cat = get_category( $cats[0] );
+		if ($cat->slug == 'kazania'){
+			
+			add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'kazania_meta_callback', 'attachment' );
+		} 
 	}
 }
 add_action( 'add_meta_boxes', 'prfx_custom_meta' );
 
-function czytelnia_meta_callback( $post ) {
+function kech_article_meta_box_callback( $post ) {
 		wp_nonce_field( basename( __FILE__ ), 'prfx_nonce' );
 		$prfx_stored_meta = get_post_meta( $post->ID );
 		?>
@@ -108,7 +114,7 @@ function kazania_meta_callback( $post ) {
     <?php
 }
 
-function prfx_meta_callback( $post ) {
+function kech_event_meta_box_callback( $post ) {
 		wp_nonce_field( basename( __FILE__ ), 'prfx_nonce' );
 		$prfx_stored_meta = get_post_meta( $post->ID );
 		?>

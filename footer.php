@@ -3,9 +3,10 @@
 	<div class="box_tag_content">
 	<?php 
 		//print_r(get_tags()); 
-		foreach (get_tags() as $tag_obj){
+		/*foreach (get_tags() as $tag_obj){
 			echo " $tag_obj->name ";
-		}
+		}*/
+		echo " Chyłka Bassara ";
 	?>
 	</div>
 </div>

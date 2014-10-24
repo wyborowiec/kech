@@ -6,10 +6,9 @@ Template Name: Kech Article
 get_header(); ?>
 
 <div class="content_padding">
-kech article
 			<?php
 				// Start the Loop.
-				query_posts( 'post_type=kech_article');
+				//query_posts( 'post_type=kech_article');
 				while ( have_posts() ) : the_post(); ?>
 
 					<h1><?php the_title(); ?></h1>
