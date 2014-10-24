@@ -1,0 +1,172 @@
+<?php
+
+add_theme_support( 'post-thumbnails' ); 
+
+function add_post_type_article() {
+    $args = array(
+      'public' => true,
+      'label'  => 'Artykuły'
+    );
+    register_post_type( 'kech_article', $args );
+}
+add_action( 'init', 'add_post_type_article' );
+
+function add_post_type_bla() {
+    $args = array(
+      'public' => true,
+      'label'  => 'BlaBla',
+	  'has_archive' => true,
+      'rewrite' => array('slug' => 'bla')
+
+    );
+    register_post_type( 'kechbla', $args );
+}
+add_action( 'init', 'add_post_type_bla' );
+
+function add_jQuery_libraries() {
+
+	//wp_deregister_script('jquery');
+
+    // Registering Scripts
+     wp_register_script('google-hosted-jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false);
+	 //wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false);
+
+     wp_register_script('jquery-validation-plugin', 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js', array('google-hosted-jquery'));
+
+    // Enqueueing Scripts to the head section
+	wp_enqueue_script('google-hosted-jquery');
+    //wp_enqueue_script('google-hosted-jquery');
+    wp_enqueue_script('jquery-validation-plugin');
+	wp_enqueue_script(
+        'wacekplacek_datetime_validate', // name your script so that you can attach other scripts and de-register, etc.
+        get_template_directory_uri() . '/validate.js', // this is the location of your script file
+        array('jquery') // this array lists the scripts upon which your script depends
+    );
+}
+ 
+// Wordpress action that says, hey wait! lets add the scripts mentioned in the function as well.
+//add_action( 'wp_enqueue_scripts', 'add_jQuery_libraries' );
+
+function the_audio_url($id) {
+	$upload_dir = wp_upload_dir();
+	$baseurl = $upload_dir['baseurl'];
+	$meta = get_post_meta($id);
+	echo $baseurl."/".$meta["_wp_attached_file"][0];
+}
+
+function the_artist($id) {
+	$meta = wp_get_attachment_metadata($id);
+	echo $meta["artist"];
+}
+
+function prfx_custom_meta() {
+	global $post;
+	$cats = wp_get_post_categories( $post -> ID);
+	$cat = get_category( $cats[0] );
+	if ($cat->slug == 'wydarzenia'){
+		add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'prfx_meta_callback', 'page' );
+	} elseif ($cat->slug == 'kazania'){
+		add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'kazania_meta_callback', 'attachment' );
+	} elseif ($cat->slug == 'czytelnia'){
+		add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'czytelnia_meta_callback', 'page' );
+	} elseif ($post -> post_type == 'kech_article'){
+		add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'czytelnia_meta_callback', 'kech_article' );
+	}
+}
+add_action( 'add_meta_boxes', 'prfx_custom_meta' );
+
+function czytelnia_meta_callback( $post ) {
+		wp_nonce_field( basename( __FILE__ ), 'prfx_nonce' );
+		$prfx_stored_meta = get_post_meta( $post->ID );
+		?>
+	 
+		<p>
+			<label for="meta-text" class="prfx-row-title"><?php _e( 'Autor', 'prfx-textdomain' )?></label>
+			<br>
+			<input type="text" name="author" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['author'] ) ) echo $prfx_stored_meta['author'][0]; ?>" required/>
+		</p>
+ 
+    <?php
+}
+
+function kazania_meta_callback( $post ) {
+		wp_nonce_field( basename( __FILE__ ), 'prfx_nonce' );
+		$prfx_stored_meta = get_post_meta( $post->ID );
+		?>
+	 
+		<p>
+			<label for="meta-text" class="prfx-row-title"><?php _e( 'Data', 'prfx-textdomain' )?></label>
+			<br>
+			<input type="date" name="event_date" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['event_date'] ) ) echo $prfx_stored_meta['event_date'][0]; ?>" />
+		</p>
+		<p>
+			<label for="meta-text" class="prfx-row-title"><?php _e( 'Autor', 'prfx-textdomain' )?></label>
+			<br>
+			<input type="text" name="author" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['author'] ) ) echo $prfx_stored_meta['author'][0]; ?>" required/>
+		</p>
+ 
+    <?php
+}
+
+function prfx_meta_callback( $post ) {
+		wp_nonce_field( basename( __FILE__ ), 'prfx_nonce' );
+		$prfx_stored_meta = get_post_meta( $post->ID );
+		?>
+	 
+		<p>
+			<label for="meta-text" class="prfx-row-title"><?php _e( 'Data wydarzenia', 'prfx-textdomain' )?></label>
+			<br>
+			<input type="date" name="event_date" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['event_date'] ) ) echo $prfx_stored_meta['event_date'][0]; ?>" required/>
+		</p>
+		<p>
+			<label for="meta-text" class="prfx-row-title"><?php _e( 'Godzina rozpoczęcia', 'prfx-textdomain' )?></label>
+			<br>
+			<input type="time" name="event_time" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['event_time'] ) ) echo $prfx_stored_meta['event_time'][0]; ?>" required/>
+		</p>
+ 
+    <?php
+}
+
+function prfx_meta_save( $post_id ) {
+    // Checks save status
+    $is_autosave = wp_is_post_autosave( $post_id );
+    $is_revision = wp_is_post_revision( $post_id );
+    $is_valid_nonce = ( isset( $_POST[ 'prfx_nonce' ] ) && wp_verify_nonce( $_POST[ 'prfx_nonce' ], basename( __FILE__ ) ) ) ? 'true' : 'false';
+ 
+    // Exits script depending on save status
+    if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
+        return;
+    }
+ 
+    // Checks for input and sanitizes/saves if needed
+    if( isset( $_POST[ 'event_date' ] ) ) {
+        update_post_meta( $post_id, 'event_date', sanitize_text_field( $_POST[ 'event_date' ] ) );
+    }
+	if( isset( $_POST[ 'event_time' ] ) ) {
+        update_post_meta( $post_id, 'event_time', sanitize_text_field( $_POST[ 'event_time' ] ) );
+    }
+	
+	if( isset( $_POST[ 'author' ] ) ) {
+        update_post_meta( $post_id, 'author', sanitize_text_field( $_POST[ 'author' ] ) );
+    }
+ 
+}
+add_action( 'save_post', 'prfx_meta_save' );
+add_action( 'edit_attachment', 'prfx_meta_save' );
+
+function register_my_menu() {
+  register_nav_menu('header-menu',__( 'Header Menu' ));
+}
+
+function get_post_author($id) {
+	get_post_meta($id, "author", true);
+}
+
+add_action( 'init', 'register_my_menu' );
+
+function wptp_add_categories_to_attachments() {
+    register_taxonomy_for_object_type( 'category', 'attachment' );
+}
+add_action( 'init' , 'wptp_add_categories_to_attachments' );
+
+?>

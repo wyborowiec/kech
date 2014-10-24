@@ -1,0 +1,281 @@
+/*
+Theme Name: KECH
+Theme URI: http://www.kech.pszczyna.pl
+Author: Waclaw Borowiec
+Author URI: http://waco.org/
+Description: KECH
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, brown, orange, tan, white, yellow, light, one-column, two-columns, right-sidebar, flexible-width, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
+Text Domain: twentythirteen
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+@font-face {
+    font-family: 'trebuchet_msregular';
+    src: url('trebuchet_ms.eot');
+    src: url('trebuchet_ms.eot?#iefix') format('embedded-opentype'),
+         url('trebuchet_ms.woff2') format('woff2'),
+         url('trebuchet_ms.woff') format('woff'),
+         url('trebuchet_ms.ttf') format('truetype'),
+         url('trebuchet_ms.svg#trebuchet_msregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+*
+{
+   font-family: 'trebuchet_msregular';
+   color: #3d3b2f;
+}
+
+#container {
+	width:1024px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	margin-bottom: 40px;
+	border: 1px transparent black;
+	background-color: #ffffff;
+}
+
+#menu1 {
+	background-color: #3d3b2f;
+	padding: 20px;
+}
+
+#menu1_a {
+	font-size: 14px;
+	color: #d3c274;
+	text-decoration: none;
+	font-weight: bold;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#slider {
+	margin-top: 5px;
+}
+
+#box1 {
+	width: 33%;
+	background-color: #6b6245;
+	float: left;
+}
+
+#col_cont {
+	background: #ccc url(col_bgd.png) repeat-y 50% 0;
+}
+
+#container3 {
+    float:left;
+    width:33%;
+	background-color: transparent;
+}
+#container2 {
+	float:left;
+    width:33%;
+	background-color: transparent;
+}
+#container1 {
+	float:left;
+    width:33%;
+   background-color: transparent;
+}
+
+.columns-or-whatever {
+  background: linear-gradient(
+    to right,
+    
+    #6b6245,
+    #6b6245 33.33%,
+    
+    #e4dcae 33.33%,
+    #e4dcae 33.73%,
+	
+	#6b6245 33.73%,
+    #6b6245 66.66%,
+	
+	#e4dcae 66.66%,
+    #e4dcae 67.06%,
+    
+    #6b6245 67.06%,
+    #6b6245
+  );
+  
+  /* clearfix */
+  overflow: hidden;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.left_right_padding {
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.content_padding {
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 10px;
+	padding-bottom: 40px;
+}
+
+#box2 {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	text-align: justify;
+    text-justify: inter-word;
+}
+
+.box_tag {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #d0c374;
+}
+
+.box_tag_caption {
+	float: left;
+	font-weight: bold;
+	width:25%;
+}
+
+.box_tag_content{
+	width:75%;
+}
+
+.box_search {
+	margin-top: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #3d3b2f;
+	color: #ffffff;
+}
+
+.box_search  input[type=submit] {
+	color: #ffffff;
+	background-color: #3d3b2f;
+	font-size: 14px;
+	border: none;
+}
+
+.shadow {
+	box-shadow: 0px 0px 10px 0px #888888;
+}
+
+#header .main-menu {
+	background-color: #3d3b2f;
+	padding: 10px;
+	
+} 
+#header .main-menu ul {} 
+#header .main-menu ul ul {} 
+#header .main-menu li {
+	display: inline;
+	color: #d3c274;
+} 
+#header .main-menu li a {
+	font-size: 14px;
+	text-decoration: none;
+	font-weight: bold;
+	padding-right: 10px;
+	color: #d3c274;
+} 
+#header .main-menu li ul {} 
+#header .main-menu li li {} 
+#header .main-menu li li a {} 
+
+.page-link  {
+	font-size: 25px;
+	color: #3d3b2f;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.page-link  a {
+	text-decoration: none;
+}
+
+#gallery_thumb {
+	margin: 10px;
+	position: relative;
+	top: 25px;
+}
+
+h1 {
+	text-align: center;
+}
+
+.column *{
+	list-style-type: none;
+	color: #ffffff;
+}
+
+.column h3 {
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 15px;
+}
+
+.column li {
+	margin-left: 15px;
+	margin-bottom: 8px;
+	font-size: 17px;
+}
+
+.column p {
+	margin-left: 15px;
+	margin-bottom: 8px;
+	font-size: 17px;
+}
+
+.column a {
+	text-decoration: none;
+}
+
+#art-link {
+	position: relative;
+    float: right;
+}
+
+#more-link {
+	margin-left: 40%;
+	top: -30px;
+	font-weight: bold;
+	float: reset;
+}
+
+.alignleft {
+	float: left;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.alignright {
+	float: right;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
+
