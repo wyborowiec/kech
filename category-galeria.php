@@ -14,8 +14,6 @@ get_header(); ?>
 
 		<div id="content" class="content_padding" role="main">
 
-			<?php if ( have_posts() ) : ?>
-
 				<h1><?php echo single_cat_title( '', false ); ?></h1>
 			<?php
 					$query = new WP_Query( 
@@ -47,13 +45,6 @@ get_header(); ?>
 					wp_reset_postdata();
 				
 				?>
-			<?php
-
-					
-					// Previous/next page navigation.
-
-				endif;
-			?>
 		</div><!-- #content -->
 
 

@@ -1,8 +1,4 @@
 <?php
-/*
-Template Name: Page
-*/
-
 get_header(); ?>
 
 <div class="content_padding">
