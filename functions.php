@@ -119,16 +119,20 @@ function kech_event_meta_box_callback( $post ) {
 		?>
 	 
 		<p>
-			<label for="meta-text" class="prfx-row-title"><?php _e( 'Data wydarzenia', 'prfx-textdomain' )?></label>
+			<label for="meta-text" class="prfx-row-title"><?php _e( 'Data rozpoczęcia', 'prfx-textdomain' )?></label>
 			<br>
-			<input type="date" name="event_date" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['event_date'] ) ) echo $prfx_stored_meta['event_date'][0]; ?>" required/>
+			<input type="date" name="event_start_date" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['event_start_date'] ) ) echo $prfx_stored_meta['event_start_date'][0]; ?>" required/>
 		</p>
 		<p>
-			<label for="meta-text" class="prfx-row-title"><?php _e( 'Godzina rozpoczęcia', 'prfx-textdomain' )?></label>
+			<label for="meta-text" class="prfx-row-title"><?php _e( 'Godzina rozpoczęcia (opcjonalnie)', 'prfx-textdomain' )?></label>
 			<br>
-			<input type="time" name="event_time" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['event_time'] ) ) echo $prfx_stored_meta['event_time'][0]; ?>" required/>
+			<input type="time" name="event_start_time" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['event_start_time'] ) ) echo $prfx_stored_meta['event_start_time'][0]; ?>"/>
 		</p>
- 
+		<p>
+			<label for="meta-text" class="prfx-row-title"><?php _e( 'Data zakończenia (opcjonalnie)', 'prfx-textdomain' )?></label>
+			<br>
+			<input type="date" name="event_end_date" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['event_end_date'] ) ) echo $prfx_stored_meta['event_end_date'][0]; ?>"/>
+		</p>
     <?php
 }
 
@@ -142,9 +146,16 @@ function prfx_meta_save( $post_id ) {
     if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
         return;
     }
+	
+	$meta_fields = array('author', 'event_start_date', 'event_start_time', 'event_end_date');
+	foreach ($meta_fields as $i => $meta_field) {
+		if( isset( $_POST[$meta_field] ) ) {
+			update_post_meta( $post_id, $meta_field, sanitize_text_field( $_POST[$meta_field] ) );
+		}
+	}
  
     // Checks for input and sanitizes/saves if needed
-    if( isset( $_POST[ 'event_date' ] ) ) {
+    /*if( isset( $_POST[ 'event_date' ] ) ) {
         update_post_meta( $post_id, 'event_date', sanitize_text_field( $_POST[ 'event_date' ] ) );
     }
 	if( isset( $_POST[ 'event_time' ] ) ) {
@@ -153,7 +164,7 @@ function prfx_meta_save( $post_id ) {
 	
 	if( isset( $_POST[ 'author' ] ) ) {
         update_post_meta( $post_id, 'author', sanitize_text_field( $_POST[ 'author' ] ) );
-    }
+    }*/
  
 }
 add_action( 'save_post', 'prfx_meta_save' );
