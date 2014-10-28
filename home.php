@@ -8,8 +8,13 @@
 	<h3>Najnowsze artykuły</h3>
 
 	<?php
-		query_posts('cat=5');
-		while (have_posts()) : the_post();
+		$query = new WP_Query( 
+			array( 
+				'post_type' => 'kech_article', 
+				'post_status' => 'publish',
+				'posts_per_page' => 5
+			) );
+		while ($query->have_posts()) : $query->the_post();
 			$id = $post->ID;
 			$link = wp_get_shortlink($id);
 			$author = get_post_meta($id, "author", true);
@@ -18,6 +23,7 @@
 		<?php echo $author; ?><a id="art-link" href="<?php echo $link; ?>">przeczytaj &rsaquo;&rsaquo;</a></p>	
 	<?php
 		endwhile;
+		wp_reset_postdata();
 	?>
 
 
@@ -26,8 +32,13 @@
 	<h3>Nadchodzące wydarzenia</h3>
 
 	<?php
-		query_posts('cat=12');
-		while (have_posts()) : the_post();
+		$query = new WP_Query( 
+			array( 
+				'post_type' => 'kech_event', 
+				'post_status' => 'publish',
+				'posts_per_page' => 5
+			) );
+		while ($query->have_posts()) : $query->the_post();
 			$id = $post->ID;
 			$link = wp_get_shortlink($id);
 	?>
@@ -35,6 +46,7 @@
 		<a id="art-link" href="<?php echo $link; ?>">przeczytaj &rsaquo;&rsaquo;</a></p>	
 	<?php
 		endwhile;
+		wp_reset_postdata();
 	?>
 
 

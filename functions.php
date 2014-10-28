@@ -17,8 +17,7 @@ function add_post_types() {
 	$args = array(
       'public' => true,
       'label'  => 'Wydarzenia',
-	  'register_meta_box_cb' => 'add_kech_event_meta_boxes'//,
-	  //'hierarchical' => true
+	  'register_meta_box_cb' => 'add_kech_event_meta_boxes'
     );
     register_post_type( 'kech_event', $args );
 }
