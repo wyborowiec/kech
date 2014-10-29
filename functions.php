@@ -28,15 +28,16 @@ function add_jQuery_libraries() {
 	//wp_deregister_script('jquery');
 
     // Registering Scripts
-     wp_register_script('google-hosted-jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false);
+     //wp_register_script('google-hosted-jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false);
 	 //wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false);
 
-     wp_register_script('jquery-validation-plugin', 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js', array('google-hosted-jquery'));
+     //wp_register_script('jquery-validation-plugin', 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js', array('google-hosted-jquery'));
 
     // Enqueueing Scripts to the head section
-	wp_enqueue_script('google-hosted-jquery');
+	//wp_enqueue_script('google-hosted-jquery');
     //wp_enqueue_script('google-hosted-jquery');
-    wp_enqueue_script('jquery-validation-plugin');
+    //wp_enqueue_script('jquery-validation-plugin');
+	echo "add jquery";
 	wp_enqueue_script(
         'wacekplacek_datetime_validate', // name your script so that you can attach other scripts and de-register, etc.
         get_template_directory_uri() . '/validate.js', // this is the location of your script file
@@ -45,7 +46,7 @@ function add_jQuery_libraries() {
 }
  
 // Wordpress action that says, hey wait! lets add the scripts mentioned in the function as well.
-//add_action( 'wp_enqueue_scripts', 'add_jQuery_libraries' );
+add_action('admin_enqueue_scripts', 'add_jQuery_libraries');
 
 function the_audio_url($id) {
 	$upload_dir = wp_upload_dir();

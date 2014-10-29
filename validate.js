@@ -1,3 +1,6 @@
-jQuery().ready(function() {
-    jQuery("#post").validate();
+jQuery(document).ready(function() {
+    jQuery("#post").submit(function( event ) {
+		alert( "Handler for .submit() called." );
+		event.preventDefault();
+	})
 });
