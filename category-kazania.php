@@ -29,6 +29,7 @@ get_header(); ?>
 	<p>Data: <?php echo $audio->post_date; ?>
 	<a href="<?php echo get_permalink( $id ); ?>">Odtwórz</a>
 	<a href="<?php echo the_audio_url($id); ?>" download>Pobierz</a>
+	<?php echo $link; ?>
 	</p>
 	</div>
 	<?php
