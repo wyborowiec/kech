@@ -276,6 +276,11 @@ h1 {
 	margin-right: auto;
 }
 
+.required {
+	visibility: hidden;
+	color: red;
+}
+
 
 
 

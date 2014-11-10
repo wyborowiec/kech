@@ -1,11 +1,8 @@
 <?php
-/*
-Template Name: Page
-*/
-
 get_header(); ?>
 
 <div class="content_padding">
+<h1>single</h1>
 			<?php
 				// Start the Loop.
 				while ( have_posts() ) : the_post(); 
@@ -38,7 +35,7 @@ get_header(); ?>
 </div>
 
 <?php
-
+get_footer();
 get_footer();
 
 ?>

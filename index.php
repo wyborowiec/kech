@@ -6,6 +6,7 @@ Error
 
 
 
+
 <?php 
-	get_footer()
+	get_footer();
 ?>

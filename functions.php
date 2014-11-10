@@ -37,7 +37,6 @@ function add_jQuery_libraries() {
 	//wp_enqueue_script('google-hosted-jquery');
     //wp_enqueue_script('google-hosted-jquery');
     //wp_enqueue_script('jquery-validation-plugin');
-	echo "add jquery";
 	wp_enqueue_script(
         'wacekplacek_datetime_validate', // name your script so that you can attach other scripts and de-register, etc.
         get_template_directory_uri() . '/validate.js', // this is the location of your script file
@@ -89,7 +88,7 @@ function kech_article_meta_box_callback( $post ) {
 		<p>
 			<label for="meta-text" class="prfx-row-title"><?php _e( 'Autor', 'prfx-textdomain' )?></label>
 			<br>
-			<input type="text" name="author" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['author'] ) ) echo $prfx_stored_meta['author'][0]; ?>" required/>
+			<input type="text" name="author" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['author'] ) ) echo $prfx_stored_meta['author'][0]; ?>" nonempty/>
 		</p>
  
     <?php
@@ -108,7 +107,7 @@ function kazania_meta_callback( $post ) {
 		<p>
 			<label for="meta-text" class="prfx-row-title"><?php _e( 'Autor', 'prfx-textdomain' )?></label>
 			<br>
-			<input type="text" name="author" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['author'] ) ) echo $prfx_stored_meta['author'][0]; ?>" required/>
+			<input type="text" name="author" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['author'] ) ) echo $prfx_stored_meta['author'][0]; ?>" nonempty/>
 		</p>
  
     <?php
@@ -122,7 +121,7 @@ function kech_event_meta_box_callback( $post ) {
 		<p>
 			<label for="meta-text" class="prfx-row-title"><?php _e( 'Data rozpoczęcia', 'prfx-textdomain' )?></label>
 			<br>
-			<input type="date" name="event_start_date" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['event_start_date'] ) ) echo $prfx_stored_meta['event_start_date'][0]; ?>" required/>
+			<input type="date" name="event_start_date" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['event_start_date'] ) ) echo $prfx_stored_meta['event_start_date'][0]; ?>" nonempty/>
 		</p>
 		<p>
 			<label for="meta-text" class="prfx-row-title"><?php _e( 'Godzina rozpoczęcia (opcjonalnie)', 'prfx-textdomain' )?></label>
