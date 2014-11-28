@@ -13,8 +13,9 @@
 
 <div class="box_search left_right_padding">
 <form>
-	<input type="text" />
-	<input type="submit" value="Szukaj >" />
+	<!--input type="text" />
+	<input type="submit" value="Szukaj >" /-->
+	<?php get_search_form(); ?>
 </form>
 </div>
 

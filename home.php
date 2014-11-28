@@ -56,7 +56,7 @@
 	<?php
 		$query = new WP_Query( 
 			array( 
-				'category_name' => 'kazania', 
+				'post_mime_type' => 'audio',
 				'post_type' => 'attachment', 
 				'post_status'=>'all',
 				'posts_per_page' => 5
@@ -66,7 +66,7 @@
 			$link = wp_get_shortlink($id);
 			$author = get_post_meta($id, "author", true);
 	?>
-		<p>"<?php echo $post->post_excerpt; ?>"</br>
+		<p>"<?php echo $post->post_title; ?>"</br>
 		<?php echo $author; ?>
 		<a id="art-link" href="<?php echo $link; ?>"> &rsaquo;&rsaquo;</a></li>	
 		</p>

@@ -1,5 +1,22 @@
 <?php
 
+/*function attachments_search_pre_get_posts( $query ) {
+  if (! is_search() ) 
+    return $query; 		
+  $post_types = $query->get( 'post_type' );
+  echo "attachments_search_pre_get_posts: $post_types";
+  $post_types = array( 'kech_article', 'attachment', 'kech_event', 'kech_gallery' );
+  $query->set( 'post_type', $post_types );
+ 
+  $post_status = array( 'publish', 'inherit' );
+  $query->set( 'post_status', $post_status );
+  var_dump($query);
+  echo "return";
+  return $query;
+ }
+add_filter( 'pre_get_posts', 'attachments_search_pre_get_posts' );
+*/
+
 add_theme_support( 'post-thumbnails' ); 
 
 function add_post_types() {
