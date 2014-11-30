@@ -14,18 +14,23 @@ get_header(); ?>
 				$s = $search_query['s'];
 				$query_sql = "
 					 SELECT *
-					 FROM $wpdb->posts
+					 FROM $wpdb->posts as post
+					 LEFT OUTER JOIN $wpdb->postmeta as meta
+					 ON post.ID=meta.post_id AND meta.meta_key='author'
 					 WHERE 
 						 (post_title LIKE '%$s%'
 						 OR
-						 post_content LIKE '%$s%')
+						 post_content LIKE '%$s%'
+						 OR
+						 (meta_value LIKE '%$s%')
+						 )
 					 AND 
 						(
 						 (post_type in ( 'kech_article', 'kech_event', 'kech_gallery' ) AND post_status='publish')
 						 OR 
 						 (post_type = 'attachment' AND post_mime_type = 'audio/mpeg' AND post_status='inherit')
 						)
-					 ORDER BY post_title LIKE '%$s%' DESC, post_date DESC
+					 ORDER BY post_title LIKE '%$s%' DESC, meta_value LIKE '%$s%' DESC, post_date DESC
 				";
 
 				$query_result = $wpdb->get_results($query_sql, OBJECT);
