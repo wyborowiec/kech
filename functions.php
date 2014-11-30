@@ -1,21 +1,35 @@
 <?php
 
-/*function attachments_search_pre_get_posts( $query ) {
-  if (! is_search() ) 
-    return $query; 		
-  $post_types = $query->get( 'post_type' );
-  echo "attachments_search_pre_get_posts: $post_types";
-  $post_types = array( 'kech_article', 'attachment', 'kech_event', 'kech_gallery' );
-  $query->set( 'post_type', $post_types );
- 
-  $post_status = array( 'publish', 'inherit' );
-  $query->set( 'post_status', $post_status );
-  var_dump($query);
-  echo "return";
-  return $query;
- }
-add_filter( 'pre_get_posts', 'attachments_search_pre_get_posts' );
-*/
+function get_paged() {
+	if (isset($_GET['pg'])){
+		return $_GET['pg'];
+	} else {
+		return 1;
+	};
+}
+
+function the_pagination($query) {
+	$paged = get_paged();
+	$max_num_pages = $query->max_num_pages;
+	if ($paged > 1){
+		$page_link = add_query_arg('pg', $paged-1);
+		echo "<a href='$page_link'>&lt;</a> ";
+	} else {
+		echo "&lt";
+	}
+	for ($i=1; $i<=$max_num_pages; $i++){ 
+		$page_link = add_query_arg('pg', $i);
+		echo $i == $paged ? "<b>" : "";
+		echo "<a href='$page_link'>$i</a> ";
+		echo $i == $paged ? "</b>" : "";
+	}
+	if ($paged < $max_num_pages){
+		$page_link = add_query_arg('pg', $paged+1);
+		echo "<a href='$page_link'>&gt;</a> ";
+	} else {
+		echo "&gt";
+	}
+}
 
 add_theme_support( 'post-thumbnails' ); 
 

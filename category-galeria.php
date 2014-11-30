@@ -16,11 +16,13 @@ get_header(); ?>
 
 				<h1><?php echo single_cat_title( '', false ); ?></h1>
 			<?php
+					$paged = get_paged();
 					$query = new WP_Query( 
 						array( 
 							'post_type' => 'kech_gallery', 
 							'post_status'=> 'publish',
-							'posts_per_page' => 10
+							'posts_per_page' => 2,
+							'paged' => $paged
 						) );
 					while ($query->have_posts() ) : $query->the_post();
 						$id = $post->ID;
@@ -43,7 +45,7 @@ get_header(); ?>
 				<?php
 					endwhile;
 					wp_reset_postdata();
-				
+					the_pagination($query);
 				?>
 		</div><!-- #content -->
 

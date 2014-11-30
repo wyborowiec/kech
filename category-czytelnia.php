@@ -15,13 +15,15 @@ get_header(); ?>
 		<div id="content" class="content_padding" role="main">
 
 			<?php
+				$paged = get_paged();
 				$query = new WP_Query( 
 					array( 
 						'post_type' => 'kech_article', 
 						'post_status'=> 'publish',
-						'posts_per_page' => 10
+						'posts_per_page' => 2,
+						'paged' => $paged
 					) );
-			
+					
 			if ($query -> have_posts()) : ?>
 
 				<h1>CZYTELNIA1</h1>
@@ -43,6 +45,7 @@ get_header(); ?>
 					endwhile;
 					// Previous/next page navigation.
 					wp_reset_postdata();
+					the_pagination($query);
 
 				else :
 					// If no content, include the "No posts found" template.
