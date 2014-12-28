@@ -1,5 +1,22 @@
 <?php
 
+function delete_post_media( $post_id ) {
+
+    $attachments = get_posts( array(
+        'post_type'      => 'attachment',
+        'posts_per_page' => -1,
+        'post_status'    => 'any',
+        'post_parent'    => $post_id
+    ) );
+
+    foreach ( $attachments as $attachment ) {
+        if ( false === wp_delete_attachment( $attachment->ID ) ) {
+            // Log failure to delete attachment.
+        }
+    }
+}
+add_action('before_delete_post', 'delete_post_media');
+
 function get_paged() {
 	if (isset($_GET['pg'])){
 		return $_GET['pg'];
@@ -55,27 +72,18 @@ function add_post_types() {
 add_action( 'init', 'add_post_types' );
 
 function add_jQuery_libraries() {
-
-	//wp_deregister_script('jquery');
-
-    // Registering Scripts
-     //wp_register_script('google-hosted-jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false);
-	 //wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false);
-
-     //wp_register_script('jquery-validation-plugin', 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js', array('google-hosted-jquery'));
-
-    // Enqueueing Scripts to the head section
-	//wp_enqueue_script('google-hosted-jquery');
-    //wp_enqueue_script('google-hosted-jquery');
-    //wp_enqueue_script('jquery-validation-plugin');
 	wp_enqueue_script(
         'wacekplacek_datetime_validate', // name your script so that you can attach other scripts and de-register, etc.
         get_template_directory_uri() . '/validate.js', // this is the location of your script file
         array('jquery') // this array lists the scripts upon which your script depends
     );
+	wp_enqueue_script(
+        'wacekplacek_datetimepicker', // name your script so that you can attach other scripts and de-register, etc.
+        get_template_directory_uri() . '/datetimepicker/jquery.datetimepicker.js', // this is the location of your script file
+        array('jquery') // this array lists the scripts upon which your script depends
+    );
 }
  
-// Wordpress action that says, hey wait! lets add the scripts mentioned in the function as well.
 add_action('admin_enqueue_scripts', 'add_jQuery_libraries');
 
 function the_audio_url($id) {
@@ -103,8 +111,7 @@ function prfx_custom_meta() {
 	if ($post->post_type == 'attachment') {
 		$cats = wp_get_post_categories( $post -> ID);
 		$cat = get_category( $cats[0] );
-		if ($cat->slug == 'kazania'){
-			
+		if ($cat->slug == 'kazania'){		
 			add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'kazania_meta_callback', 'attachment' );
 		} 
 	}
@@ -125,21 +132,28 @@ function kech_article_meta_box_callback( $post ) {
     <?php
 }
 
+function link_datetimepicker_css() {
+	?>
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/datetimepicker/jquery.datetimepicker.css"/ >
+	<?php
+}
+
 function kazania_meta_callback( $post ) {
 		wp_nonce_field( basename( __FILE__ ), 'prfx_nonce' );
 		$prfx_stored_meta = get_post_meta( $post->ID );
+		link_datetimepicker_css();
 		?>
-	 
 		<p>
 			<label for="meta-text" class="prfx-row-title"><?php _e( 'Data', 'prfx-textdomain' )?></label>
 			<br>
-			<input type="date" name="event_date" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['event_date'] ) ) echo $prfx_stored_meta['event_date'][0]; ?>" />
+			<input type="text" name="event_date" id="datepicker" value="<?php if ( isset ( $prfx_stored_meta['event_date'] ) ) echo $prfx_stored_meta['event_date'][0]; ?>" />
 		</p>
 		<p>
 			<label for="meta-text" class="prfx-row-title"><?php _e( 'Autor', 'prfx-textdomain' )?></label>
 			<br>
 			<input type="text" name="author" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['author'] ) ) echo $prfx_stored_meta['author'][0]; ?>" nonempty/>
 		</p>
+		
  
     <?php
 }
@@ -147,22 +161,22 @@ function kazania_meta_callback( $post ) {
 function kech_event_meta_box_callback( $post ) {
 		wp_nonce_field( basename( __FILE__ ), 'prfx_nonce' );
 		$prfx_stored_meta = get_post_meta( $post->ID );
+		link_datetimepicker_css();
 		?>
-	 
 		<p>
 			<label for="meta-text" class="prfx-row-title"><?php _e( 'Data rozpoczęcia', 'prfx-textdomain' )?></label>
 			<br>
-			<input type="date" name="event_start_date" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['event_start_date'] ) ) echo $prfx_stored_meta['event_start_date'][0]; ?>" nonempty/>
+			<input type="text" name="event_start_date" id="meta-text" class="datepicker" value="<?php if ( isset ( $prfx_stored_meta['event_start_date'] ) ) echo $prfx_stored_meta['event_start_date'][0]; ?>" nonempty/>
 		</p>
 		<p>
 			<label for="meta-text" class="prfx-row-title"><?php _e( 'Godzina rozpoczęcia (opcjonalnie)', 'prfx-textdomain' )?></label>
 			<br>
-			<input type="time" name="event_start_time" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['event_start_time'] ) ) echo $prfx_stored_meta['event_start_time'][0]; ?>"/>
+			<input type="text" name="event_start_time" id="meta-text" class="timepicker" value="<?php if ( isset ( $prfx_stored_meta['event_start_time'] ) ) echo $prfx_stored_meta['event_start_time'][0]; ?>"/>
 		</p>
 		<p>
 			<label for="meta-text" class="prfx-row-title"><?php _e( 'Data zakończenia (opcjonalnie)', 'prfx-textdomain' )?></label>
 			<br>
-			<input type="date" name="event_end_date" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['event_end_date'] ) ) echo $prfx_stored_meta['event_end_date'][0]; ?>"/>
+			<input type="text" name="event_end_date" id="meta-text" class="datepicker" value="<?php if ( isset ( $prfx_stored_meta['event_end_date'] ) ) echo $prfx_stored_meta['event_end_date'][0]; ?>"/>
 		</p>
     <?php
 }
@@ -186,7 +200,7 @@ function prfx_meta_save( $post_id ) {
 	}
  
     // Checks for input and sanitizes/saves if needed
-    /*if( isset( $_POST[ 'event_date' ] ) ) {
+    if( isset( $_POST[ 'event_date' ] ) ) {
         update_post_meta( $post_id, 'event_date', sanitize_text_field( $_POST[ 'event_date' ] ) );
     }
 	if( isset( $_POST[ 'event_time' ] ) ) {
@@ -195,7 +209,7 @@ function prfx_meta_save( $post_id ) {
 	
 	if( isset( $_POST[ 'author' ] ) ) {
         update_post_meta( $post_id, 'author', sanitize_text_field( $_POST[ 'author' ] ) );
-    }*/
+    }
  
 }
 add_action( 'save_post', 'prfx_meta_save' );

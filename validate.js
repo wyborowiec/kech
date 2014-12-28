@@ -15,4 +15,6 @@ jQuery(document).ready(function() {
 			event.preventDefault();
 		}
 	});
+	jQuery('.datepicker').datetimepicker({lang:'pl', timepicker:false, format:'d.m.Y'});
+	jQuery('.timepicker').datetimepicker({lang:'pl', datepicker:false, format:'H:i'});
 });
