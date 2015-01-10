@@ -17,4 +17,16 @@ jQuery(document).ready(function() {
 	});
 	jQuery('.datepicker').datetimepicker({lang:'pl', timepicker:false, format:'d.m.Y'});
 	jQuery('.timepicker').datetimepicker({lang:'pl', datepicker:false, format:'H:i'});
+	/*jQuery(document).ready(function() {
+		jQuery('#upload_image_button').click(function() {
+			window.send_to_editor = function(html) {
+				imgurl = jQuery('img',html).attr('src');
+				jQuery('#upload_image').val(imgurl);
+				tb_remove();
+			}
+			//http://localhost/wordpress/wp-admin/post.php?post=148&action=edit#
+			tb_show('', 'post.php?post=148&action=edit#');
+			return false;
+		});
+	});*/
 });

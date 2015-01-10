@@ -1,20 +1,14 @@
 <?php
 
-function my_gallery_shortcode( $output = '', $atts, $content = false, $tag = false ) {
-	//$return = $output; // fallback
+add_shortcode( 'gallery', 'new_gallery_shortcode' );
 
-	// retrieve content of your own gallery function
-	//$my_result = gallery_shortcode( $atts );
-	//return "gallery hook!";
-	// boolean false = empty, see http://php.net/empty
-	//if( !empty( $my_result ) ) {
-	//	$return = $my_result;
-	//}
-
-	return gallery_shortcode( $atts );
+function new_gallery_shortcode($attr) {
+	$output = gallery_shortcode($attr);
+	if($attr['link'] == "file") {
+		$output = preg_replace('/<a href/', '<a rel=lightbox href', $output);
+	}
+	return $output;
 }
-
-add_filter( 'post_gallery', 'my_gallery_shortcode', 10, 4 );
 
 function delete_post_media( $post_id ) {
 
@@ -101,6 +95,18 @@ function add_jQuery_libraries() {
 }
  
 add_action('admin_enqueue_scripts', 'add_jQuery_libraries');
+
+function my_admin_scripts() {
+	wp_enqueue_script('media-upload');
+	wp_enqueue_script('thickbox');
+	//wp_register_script('my-upload', get_bloginfo('template_url') . '/functions/my-script.js', array('jquery','media-upload','thickbox'));
+	//wp_enqueue_script('my-upload');
+}
+function my_admin_styles() {
+	wp_enqueue_style('thickbox');
+}
+add_action('admin_print_scripts', 'my_admin_scripts');
+add_action('admin_print_styles', 'my_admin_styles');
 
 function the_audio_url($id) {
 	$upload_dir = wp_upload_dir();
