@@ -1,5 +1,21 @@
 <?php
 
+function my_gallery_shortcode( $output = '', $atts, $content = false, $tag = false ) {
+	//$return = $output; // fallback
+
+	// retrieve content of your own gallery function
+	//$my_result = gallery_shortcode( $atts );
+	//return "gallery hook!";
+	// boolean false = empty, see http://php.net/empty
+	//if( !empty( $my_result ) ) {
+	//	$return = $my_result;
+	//}
+
+	return gallery_shortcode( $atts );
+}
+
+add_filter( 'post_gallery', 'my_gallery_shortcode', 10, 4 );
+
 function delete_post_media( $post_id ) {
 
     $attachments = get_posts( array(
@@ -108,12 +124,9 @@ function add_kech_event_meta_boxes($post) {
 
 function prfx_custom_meta() {
 	global $post;
-	if ($post->post_type == 'attachment') {
-		$cats = wp_get_post_categories( $post -> ID);
-		$cat = get_category( $cats[0] );
-		if ($cat->slug == 'kazania'){		
-			add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'kazania_meta_callback', 'attachment' );
-		} 
+	if ($post->post_type == 'attachment' and $post->post_mime_type == 'audio/mpeg') {	
+		remove_meta_box( 'attachment-id3' , 'attachment' , 'normal' ); 
+		add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'kazania_meta_callback', 'attachment' );
 	}
 }
 add_action( 'add_meta_boxes', 'prfx_custom_meta' );
