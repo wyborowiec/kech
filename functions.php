@@ -1,5 +1,6 @@
 <?php
 
+add_image_size('article-thumbnail', 80, 80, array( 'left', 'top' ) );
 add_shortcode( 'gallery', 'new_gallery_shortcode' );
 
 function new_gallery_shortcode($attr) {
@@ -64,7 +65,8 @@ function add_post_types() {
     $args = array(
       'public' => true,
       'label'  => 'Artykuły',
-	  'register_meta_box_cb' => 'add_kech_article_meta_boxes'
+	  'register_meta_box_cb' => 'add_kech_article_meta_boxes',
+	  'supports' => array('thumbnail', 'title', 'editor')
     );
     register_post_type( 'kech_article', $args );
 	$args = array(
@@ -75,7 +77,8 @@ function add_post_types() {
 	$args = array(
       'public' => true,
       'label'  => 'Wydarzenia',
-	  'register_meta_box_cb' => 'add_kech_event_meta_boxes'
+	  'register_meta_box_cb' => 'add_kech_event_meta_boxes',
+	  'supports' => array('thumbnail', 'title', 'editor')
     );
     register_post_type( 'kech_event', $args );
 }

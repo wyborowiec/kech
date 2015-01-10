@@ -15,6 +15,7 @@ get_header(); ?>
 		<div id="content" class="content_padding" role="main">
 
 			<?php
+				
 				$paged = get_paged();
 				$query = new WP_Query( 
 					array( 
@@ -26,7 +27,7 @@ get_header(); ?>
 					
 			if ($query -> have_posts()) : ?>
 
-				<h1>CZYTELNIA1</h1>
+				<h1>CZYTELNIA</h1>
 
 			<?php
 					// Start the Loop.
@@ -35,11 +36,25 @@ get_header(); ?>
 						$author = get_post_meta($id, "author", true);
 						$title = get_the_title();
 			?>
-				<?php 
-				the_shortlink($title, $title, "<span class=\"page-link\">", "</span>"); 
-				echo "<p>Autor: ".$author."</p>";
-				the_excerpt();
-				?>
+				<div class="article_item">
+					<div class="article_item_title">
+					<?php the_title(); ?>
+					</div>
+					<div class="article_item_thumb">
+					<?php 
+					echo get_the_post_thumbnail($id, 'article-thumbnail');
+					?>
+					</div>
+					<div class="article_item_summary">
+					<?php
+					//the_shortlink($title, $title, "<span class=\"page-link\">", "</span>"); 
+					echo "<h1>Autor: ".$author."</h1>";
+					the_excerpt();
+					?>
+					</div>
+					<div class="article_item_end">
+					</div>
+				</div>
 			<?php
 
 					endwhile;

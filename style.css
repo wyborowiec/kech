@@ -130,6 +130,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 	padding-right: 40px;
 	padding-top: 10px;
 	padding-bottom: 40px;
+	font-size: 13px;
 }
 
 #box2 {
@@ -281,6 +282,43 @@ h1 {
 	color: red;
 }
 
+.article_item {
+	overflow: hidden;
+}
+
+.article_item_title {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 18px;
+}
+
+.article_item_thumb {
+	float: left;
+	width: 11%;
+	/*background-color: red;*/
+}
+
+.article_item_summary { 	
+	/*background-color: green;*/
+	float: right;
+	width: 89%;
+}
+
+.article_item_summary h1 {
+	font-size: 13px;
+	text-align: left;
+	font-weight: normal;
+	margin-top: 0px;
+	margin-bottom: 20px;
+}
+
+.article_item_summary p {
+	text-align: justify;
+}
+
+.article_item_end {
+	clear: left;
+}
 
 
 
