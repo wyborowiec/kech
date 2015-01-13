@@ -130,7 +130,21 @@ Use it to make something cool, have fun, and share what you've learned with othe
 	padding-right: 40px;
 	padding-top: 10px;
 	padding-bottom: 40px;
-	font-size: 13px;
+	font-size: 12px;
+}
+
+.content_padding h1 {
+	text-align: left;
+	font-size: 18px;
+	margin-top: 45px;
+	margin-bottom: 35px;
+}
+
+.content_padding h2 {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 18px;
+	text-align: left;
 }
 
 #box2 {
@@ -198,7 +212,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 #header .main-menu li li a {} 
 
 .page-link  {
-	font-size: 25px;
+	font-size: 12px;
 	color: #3d3b2f;
 	text-decoration: none;
 	font-weight: bold;
@@ -286,26 +300,18 @@ h1 {
 	overflow: hidden;
 }
 
-.article_item_title {
-	font-size: 18px;
-	font-weight: bold;
-	margin-bottom: 18px;
-}
-
 .article_item_thumb {
 	float: left;
 	width: 11%;
-	/*background-color: red;*/
 }
 
 .article_item_summary { 	
-	/*background-color: green;*/
 	float: right;
 	width: 89%;
 }
 
 .article_item_summary h1 {
-	font-size: 13px;
+	font-size: 12px;
 	text-align: left;
 	font-weight: normal;
 	margin-top: 0px;
@@ -319,6 +325,65 @@ h1 {
 .article_item_end {
 	clear: left;
 }
+
+.follow_link {
+	color: #d3c274;
+	text-decoration: none;
+	background-color: #3d3b2f;
+	float: right;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.pagination_margin {
+	margin: 9px;
+}
+
+.arrow-left {
+	width: 0; 
+	height: 0; 
+	border-top: 9px solid transparent;
+	border-bottom: 9px solid transparent; 
+	border-right:14px solid #3d3b2f; 
+	float: left;
+}
+
+.arrow-right {
+	width: 0; 
+	height: 0; 
+	border-top: 9px solid transparent;
+	border-bottom: 9px solid transparent;
+	border-left: 14px solid #3d3b2f;
+	float: left;
+}
+
+.page_no {
+	float: left;
+}
+
+.page_no a {
+	text-decoration: none;
+	font-size: 15px;
+}
+
+.page_no_other {
+
+}
+
+.page_no_curr {
+	color: #ffffff;
+	background-color: #3d3b2f;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+#hideoverflow { overflow: hidden; margin-top: 50px;}
+#outer { position: relative; left: 50%; float: left; }
+#inner { position: relative; left: -50%; float: left; }
 
 
 

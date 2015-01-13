@@ -35,10 +35,12 @@ get_header(); ?>
 						$id = get_the_ID();
 						$author = get_post_meta($id, "author", true);
 						$title = get_the_title();
+						$shortlink = wp_get_shortlink();
+						$date = get_the_date("j.m.Y");
 			?>
 				<div class="article_item">
 					<div class="article_item_title">
-					<?php the_title(); ?>
+					<h2><?php the_title(); ?></h2>
 					</div>
 					<div class="article_item_thumb">
 					<?php 
@@ -46,11 +48,11 @@ get_header(); ?>
 					?>
 					</div>
 					<div class="article_item_summary">
+					<h1><?php echo "Autor: $author, data: $date";?></h1>
 					<?php
-					//the_shortlink($title, $title, "<span class=\"page-link\">", "</span>"); 
-					echo "<h1>Autor: ".$author."</h1>";
 					the_excerpt();
 					?>
+					<a class="follow_link" href="<?php echo $shortlink ?>">CZYTAJ &rsaquo;</a>
 					</div>
 					<div class="article_item_end">
 					</div>

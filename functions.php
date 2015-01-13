@@ -39,24 +39,35 @@ function get_paged() {
 function the_pagination($query) {
 	$paged = get_paged();
 	$max_num_pages = $query->max_num_pages;
+	echo "<div id='hideoverflow'><div id='outer'><div id='inner'>";
 	if ($paged > 1){
 		$page_link = add_query_arg('pg', $paged-1);
-		echo "<a href='$page_link'>&lt;</a> ";
+		echo "<a href='$page_link'>".pagination_left()."</a> ";
 	} else {
-		echo "&lt";
+		echo pagination_left();
 	}
 	for ($i=1; $i<=$max_num_pages; $i++){ 
 		$page_link = add_query_arg('pg', $i);
-		echo $i == $paged ? "<b>" : "";
-		echo "<a href='$page_link'>$i</a> ";
-		echo $i == $paged ? "</b>" : "";
+		//echo $i == $paged ? "<b>" : "";
+		$page_no_a_class = $i == $paged ? "page_no_curr" : "page_no_other";
+		echo "<div class='page_no pagination_margin'><a class='$page_no_a_class' href='$page_link'>$i</a></div>";
+		//echo $i == $paged ? "</b>" : "";
 	}
 	if ($paged < $max_num_pages){
 		$page_link = add_query_arg('pg', $paged+1);
-		echo "<a href='$page_link'>&gt;</a> ";
+		echo "<a href='$page_link'>".pagination_right()."</a> ";
 	} else {
-		echo "&gt";
+		echo pagination_right();
 	}
+	echo "</div></div></div>";
+}
+
+function pagination_left() {
+	return '<div class="arrow-left pagination_margin"></div>';
+}
+
+function pagination_right() {
+	return '<div class="arrow-right pagination_margin"></div>';
 }
 
 add_theme_support( 'post-thumbnails' ); 
