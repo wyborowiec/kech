@@ -1,6 +1,7 @@
 <?php
 
 add_image_size('article-thumbnail', 80, 80, array( 'left', 'top' ) );
+add_image_size('gallery-thumbnail', 210, 210, array( 'left', 'top' ) );
 add_shortcode( 'gallery', 'new_gallery_shortcode' );
 
 function new_gallery_shortcode($attr) {
@@ -48,10 +49,8 @@ function the_pagination($query) {
 	}
 	for ($i=1; $i<=$max_num_pages; $i++){ 
 		$page_link = add_query_arg('pg', $i);
-		//echo $i == $paged ? "<b>" : "";
 		$page_no_a_class = $i == $paged ? "page_no_curr" : "page_no_other";
 		echo "<div class='page_no pagination_margin'><a class='$page_no_a_class' href='$page_link'>$i</a></div>";
-		//echo $i == $paged ? "</b>" : "";
 	}
 	if ($paged < $max_num_pages){
 		$page_link = add_query_arg('pg', $paged+1);

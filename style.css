@@ -385,5 +385,29 @@ h1 {
 #outer { position: relative; left: 50%; float: left; }
 #inner { position: relative; left: -50%; float: left; }
 
+.gallery_icon {
+	float: left;
+	margin-right: 33px;
+}
+
+.gallery_margin_bottom {
+	margin-bottom: 40px;
+}
+
+.gallery_clear {
+	clear: left;
+}
+
+.gallery_title {
+	margin-top: 10px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.gallery_date {
+	text-align: center;
+	font-size: 14px;
+}
+
 
 
