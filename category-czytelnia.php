@@ -13,7 +13,7 @@ get_header(); ?>
 
 
 		<div id="content" class="content_padding" role="main">
-
+			<h1>CZYTELNIA</h1>
 			<?php
 				
 				$paged = get_paged();
@@ -25,11 +25,7 @@ get_header(); ?>
 						'paged' => $paged
 					) );
 					
-			if ($query -> have_posts()) : ?>
-
-				<h1>CZYTELNIA</h1>
-
-			<?php
+			if ($query -> have_posts()) : 
 					// Start the Loop.
 					while ($query -> have_posts() ) : $query -> the_post();
 						$id = get_the_ID();
