@@ -38,8 +38,12 @@ function get_paged() {
 }
 
 function the_pagination($query) {
-	$paged = get_paged();
 	$max_num_pages = $query->max_num_pages;
+	return the_pagination_num_pages($max_num_pages);
+}
+
+function the_pagination_num_pages($max_num_pages) {
+	$paged = get_paged();
 	echo "<div id='hideoverflow'><div id='outer'><div id='inner'>";
 	if ($paged > 1){
 		$page_link = add_query_arg('pg', $paged-1);

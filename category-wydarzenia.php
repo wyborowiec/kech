@@ -28,13 +28,9 @@ get_header(); ?>
 					$id = get_the_ID();
 					$author = get_post_meta($id, "author", true);
 					$title = get_the_title();
-					//$date = get_the_date("j.m.Y")
 					$date = get_post_meta($id, "event_start_date", true);
 					$time = get_post_meta($id, "event_start_time", true);
 					$shortlink = wp_get_shortlink();
-					//the_shortlink($title, $title, "<span class=\"page-link\">", "</span>"); 
-					//echo "<p>Autor: ".$author."</p>";
-					//the_excerpt();
 					?>
 					<div class="article_item">
 					<div class="article_item_title">
