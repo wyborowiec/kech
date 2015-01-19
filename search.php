@@ -34,10 +34,32 @@ function get_query_sql(){
 	";
 }
 
+function the_kech_category() {
+	global $post;
+	$post_type = get_post_type();
+	switch ($post_type) {
+		case "kech_article":
+			$category = "Czytelnia";
+			break;
+		case "kech_event":
+			$category = "Wydarzenia";
+			break;
+		case "kech_gallery":
+			$category = "Galeria";
+			break;
+	}
+	echo $category;
+}
+
 ?>
 
 <div class="content_padding">
 			<h1>WYNIKI WYSZUKIWANIA:</h1>
+			<div class="box_search2_wrap">
+				<div class="box_search2">
+					<?php get_search("box_search2_submit"); ?>
+				</div>
+			</div>
 			<div class="search_keywords">Słowa kluczowe: "<?php echo "$s"; ?>"</div>
 			<?php
 			
@@ -55,18 +77,6 @@ function get_query_sql(){
 					$id = $post->ID;
 					$shortlink = wp_get_shortlink();
 					$date = get_the_date("j.m.Y");
-					$post_type = get_post_type();
-					switch ($post_type) {
-						case "kech_article":
-							$category = "Czytelnia";
-							break;
-						case "kech_event":
-							$category = "Wydarzenia";
-							break;
-						case "kech_gallery":
-							$category = "Galeria";
-							break;
-					}
 			?>
 			<div class="search_result">
 				<div class="search_result_desc">
@@ -74,7 +84,7 @@ function get_query_sql(){
 						<?php the_title(); ?>
 					</div>
 					<div class="search_result_details">
-						Data: <?php echo $date; ?>, kategoria: <?php echo $category; ?>
+						Data: <?php echo $date; ?>, kategoria: <?php the_kech_category(); ?>
 					</div>
 				</div>
 				<div class="search_result_link">

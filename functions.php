@@ -1,5 +1,13 @@
 <?php
 
+function get_search($submit_class = "") {?>
+<form role="search" method="get" action="<?php echo home_url( '/' ); ?>">
+	<input type="search" placeholder="Szukany tekst" value="<?php echo get_search_query() ?>" name="s" size="25"/>
+	<input class="<?php echo $submit_class; ?>" type="submit" value="Szukaj &rsaquo;" />
+</form>
+<?php
+}
+
 add_image_size('article-thumbnail', 80, 80, array( 'left', 'top' ) );
 add_image_size('gallery-thumbnail', 210, 210, array( 'left', 'top' ) );
 add_shortcode( 'gallery', 'new_gallery_shortcode' );
