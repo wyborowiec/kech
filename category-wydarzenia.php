@@ -53,7 +53,7 @@ get_header(); ?>
 					<?php
 					the_excerpt();
 					?>
-					<a class="follow_link" href="<?php echo $shortlink ?>">CZYTAJ &rsaquo;</a>
+					<a class="follow_link float_right" href="<?php echo $shortlink ?>">CZYTAJ &rsaquo;</a>
 					</div>
 					<div class="article_item_end">
 					</div>

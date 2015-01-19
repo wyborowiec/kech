@@ -1,7 +1,7 @@
 <?php
 global $wpdb;
 get_header(); 
-$limit = 2;
+$limit = 8;
 $paged = get_paged();
 $search_query = $wp_query->query;
 $s = $search_query['s'];
@@ -38,7 +38,7 @@ function get_query_sql(){
 
 <div class="content_padding">
 			<h1>WYNIKI WYSZUKIWANIA:</h1>
-			<p>Słowa kluczowe: "<?php echo "$s"; ?>"</p>
+			<div class="search_keywords">Słowa kluczowe: "<?php echo "$s"; ?>"</div>
 			<?php
 			
 //1 Query	SELECT SQL_CALC_FOUND_ROWS  wp_posts.ID FROM wp_posts  WHERE 1=1  AND (((wp_posts.post_title LIKE '%aaaa%') OR (wp_posts.post_content LIKE '%aaaa%')))  AND wp_posts.post_type IN ('post', 'page', 'attachment', 'kech_article', 'kech_gallery', 'kech_event') AND (wp_posts.post_status = 'publish' OR wp_posts.post_author = 1 AND wp_posts.post_status = 'private')  ORDER BY wp_posts.post_title LIKE '%aaaa%' DESC, wp_posts.post_date DESC LIMIT 0, 10
@@ -48,16 +48,42 @@ function get_query_sql(){
 				$count_result = $wpdb->get_results("SELECT FOUND_ROWS() as count", OBJECT);
 				$total_count = $count_result[0]->count;
 			?>
-				<p>Łącznie znalezionych <?php echo $total_count; ?> pozycji.</p>
+				<div class="search_total">Łącznie znalezionych <?php echo $total_count; ?> pozycji.</div>
 			<?php
 				foreach ($query_result as $post): 
 					setup_postdata($post);
 					$id = $post->ID;
-					$permalink = get_permalink($id);
+					$shortlink = wp_get_shortlink();
+					$date = get_the_date("j.m.Y");
+					$post_type = get_post_type();
+					switch ($post_type) {
+						case "kech_article":
+							$category = "Czytelnia";
+							break;
+						case "kech_event":
+							$category = "Wydarzenia";
+							break;
+						case "kech_gallery":
+							$category = "Galeria";
+							break;
+					}
 			?>
-			<p>
-				<a href="<?php echo $permalink; ?>"><?php the_title(); ?></a>
-			</p>
+			<div class="search_result">
+				<div class="search_result_desc">
+					<div class="search_result_title">
+						<?php the_title(); ?>
+					</div>
+					<div class="search_result_details">
+						Data: <?php echo $date; ?>, kategoria: <?php echo $category; ?>
+					</div>
+				</div>
+				<div class="search_result_link">
+					<a class="follow_link" href="<?php echo $shortlink ?>">WEJDŹ &rsaquo;</a>
+				</div>
+				<div class="search_result_clear">
+				</div>
+			
+			</div>
 			<?php 
 				endforeach; 
 				$max_num_pages = (int)($total_count/$limit) + 1;

@@ -330,11 +330,14 @@ h1 {
 	color: #d3c274;
 	text-decoration: none;
 	background-color: #3d3b2f;
-	float: right;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	padding-left: 15px;
 	padding-right: 15px;
+}
+
+.float_right {
+	float: right;
 }
 
 .pagination_margin {
@@ -406,6 +409,42 @@ h1 {
 
 .gallery_date {
 	text-align: center;
+	font-size: 14px;
+}
+
+.search_result_desc {
+	float: left;
+	width: 650px;
+}
+
+.search_result_link {
+	position: relative;
+	top: 10px;
+}
+
+.search_result_clear {
+	clear: left;
+}
+
+.search_result_title {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+.search_result_details {
+	font-size: 14px;
+	margin-bottom: 30px;
+}
+
+.search_keywords {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.search_total {
+	margin-top: 20px;
+	margin-bottom: 40px;
 	font-size: 14px;
 }
 
