@@ -145,10 +145,14 @@ function add_user_script() {
 }
 
 function the_audio_url($id) {
+	echo get_audio_url($id);
+}
+
+function get_audio_url($id) {
 	$upload_dir = wp_upload_dir();
 	$baseurl = $upload_dir['baseurl'];
 	$meta = get_post_meta($id);
-	echo $baseurl."/".$meta["_wp_attached_file"][0];
+	return $baseurl."/".$meta["_wp_attached_file"][0];
 }
 
 function the_artist($id) {

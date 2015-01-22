@@ -24,6 +24,7 @@ get_header(); ?>
 			$id = $post->ID;
 			$author = get_post_meta($id, "author", true);
 			$date = get_post_meta($id, "event_date", true);
+			$audio_url = get_audio_url($id);
 	?>
 	<div class="kazania_list">
 		<div class="item_title" >
@@ -33,15 +34,22 @@ get_header(); ?>
 			<div class="kazania_date">
 				Data: <?php echo $date; ?>
 			</div>
-			<div class="kazania_button">
-				<div id="button_play" class="follow_link2">Odtwórz</div>
+			<div id="<?php echo $id; ?>" class="kazania_button">
+				<div class="follow_link2">Odtwórz</div>
 			</div>
 			<div class="kazania_button">
-				<a class="follow_link2"href="<?php echo the_audio_url($id); ?>" download>Pobierz</a>
+				<a class="follow_link2" href="<?php echo $audio_url; ?>" download>Pobierz</a>
 			</div>
 			<div class="kazania_clear"></div>
 		</div>
-		<div id="kazania_player"><?php the_content(); ?></div>
+		<div id="<?php echo $id; ?>" class="kazania_player">
+			<?php 
+				$attr = array(
+					'src'      => $audio_url
+					);
+				echo wp_audio_shortcode( $attr );
+			?>
+		</div>
 	</div>
 	<?php
 	endwhile;

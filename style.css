@@ -506,6 +506,8 @@ h1 {
 	padding-right: 15px;
 }
 
-#kazania_player {
+.kazania_player {
 	display: none;
 }
+
+
