@@ -80,10 +80,10 @@ function the_kech_category() {
 			?>
 			<div class="search_result">
 				<div class="search_result_desc">
-					<div class="search_result_title">
+					<div class="item_title">
 						<?php the_title(); ?>
 					</div>
-					<div class="search_result_details">
+					<div class="item_details">
 						Data: <?php echo $date; ?>, kategoria: <?php the_kech_category(); ?>
 					</div>
 				</div>

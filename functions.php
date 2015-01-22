@@ -127,11 +127,22 @@ function my_admin_scripts() {
 	//wp_register_script('my-upload', get_bloginfo('template_url') . '/functions/my-script.js', array('jquery','media-upload','thickbox'));
 	//wp_enqueue_script('my-upload');
 }
+
 function my_admin_styles() {
 	wp_enqueue_style('thickbox');
 }
+
 add_action('admin_print_scripts', 'my_admin_scripts');
 add_action('admin_print_styles', 'my_admin_styles');
+
+add_action( 'wp_enqueue_scripts', 'add_user_script' );
+function add_user_script() {
+    wp_enqueue_script(
+        'user', // name your script so that you can attach other scripts and de-register, etc.
+        get_template_directory_uri() . '/js/user.js', // this is the location of your script file
+        array('jquery') // this array lists the scripts upon which your script depends
+    );
+}
 
 function the_audio_url($id) {
 	$upload_dir = wp_upload_dir();

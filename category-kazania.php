@@ -7,7 +7,7 @@ get_header(); ?>
 
 <div class="content_padding">
 
-<h1>Kazania1</h1>
+<h1>Kazania</h1>
 
 <?php
 	$paged = get_paged();
@@ -20,21 +20,28 @@ get_header(); ?>
 			'posts_per_page' => 2
 		) );
 	
-	//foreach ( $audios as $audio ) {
 	while ($query -> have_posts() ) : $query -> the_post();
-			//setup_postdata( $audio );
 			$id = $post->ID;
-			//$link = wp_get_attachment_link($id);
-			$meta = wp_get_attachment_metadata($id);
+			$author = get_post_meta($id, "author", true);
+			$date = get_post_meta($id, "event_date", true);
 	?>
-	<div>
-	<span class="page-link"><?php echo $meta["artist"]; ?> - <?php echo $post->post_title; ?></span>
-	</div>
-	<div>
-	<p>Data: <?php echo $post->post_date; ?>
-	<a href="<?php echo get_permalink( $id ); ?>">Odtwórz</a>
-	<a href="<?php echo the_audio_url($id); ?>" download>Pobierz</a>
-	</p>
+	<div class="kazania_list">
+		<div class="item_title" >
+		<?php echo $author; ?> - <?php echo $post->post_title; ?>
+		</div>
+		<div class="item_details">
+			<div class="kazania_date">
+				Data: <?php echo $date; ?>
+			</div>
+			<div class="kazania_button">
+				<div id="button_play" class="follow_link2">Odtwórz</div>
+			</div>
+			<div class="kazania_button">
+				<a class="follow_link2"href="<?php echo the_audio_url($id); ?>" download>Pobierz</a>
+			</div>
+			<div class="kazania_clear"></div>
+		</div>
+		<div id="kazania_player"><?php the_content(); ?></div>
 	</div>
 	<?php
 	endwhile;

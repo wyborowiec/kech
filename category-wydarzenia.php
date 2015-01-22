@@ -33,7 +33,7 @@ get_header(); ?>
 					$shortlink = wp_get_shortlink();
 					?>
 					<div class="article_item">
-					<div class="article_item_title">
+					<div class="item_title">
 					<h2><?php the_title(); ?></h2>
 					</div>
 					<div class="article_item_thumb">
