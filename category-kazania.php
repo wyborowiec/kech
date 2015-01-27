@@ -35,10 +35,10 @@ get_header(); ?>
 				Data: <?php echo $date; ?>
 			</div>
 			<div id="<?php echo $id; ?>" class="kazania_button">
-				<div class="follow_link2">Odtwórz</div>
+				<a class="follow_link2 play_button" href=""><img class="kazania_icon" id="<?php echo $id; ?>" src="<?php echo get_template_directory_uri()."/pics/odtworz.png"; ?>"/> Odtwórz</a>
 			</div>
 			<div class="kazania_button">
-				<a class="follow_link2" href="<?php echo $audio_url; ?>" download>Pobierz</a>
+				<a class="follow_link2" href="<?php echo $audio_url; ?>" download><img src="<?php echo get_template_directory_uri()."/pics/pobierz.png"; ?>"/> Pobierz</a>
 			</div>
 			<div class="kazania_clear"></div>
 		</div>

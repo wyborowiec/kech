@@ -244,20 +244,20 @@ h1 {
 
 .column h3 {
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 18px;
 	margin-top: 15px;
 }
 
 .column li {
 	margin-left: 15px;
 	margin-bottom: 8px;
-	font-size: 17px;
+	font-size: 16px;
 }
 
 .column p {
 	margin-left: 15px;
 	margin-bottom: 8px;
-	font-size: 17px;
+	font-size: 16px;
 }
 
 .column a {
@@ -490,6 +490,16 @@ h1 {
 .kazania_button {
 	margin-right: 25px;
 	float: left;
+	width: 	90px;
+	background-color: #3d3b2f;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: center;
+	vertical-align: middle;
+	position: relative;
+	top: -4px;
 }
 
 .kazania_clear {
@@ -499,15 +509,24 @@ h1 {
 .follow_link2 {
 	color: #ffffff;
 	text-decoration: none;
-	background-color: #3d3b2f;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	padding-left: 15px;
-	padding-right: 15px;
+
 }
 
 .kazania_player {
 	display: none;
+}
+
+.item_details {
+	margin-top: 18px;
+}
+
+.follow_link2 img{
+	position: relative;
+	top: 2px;
+}
+
+.kazania_list {
+	margin-top: 30px;
 }
 
 
