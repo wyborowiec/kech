@@ -1,5 +1,21 @@
 <?php
 
+function send_mail(){
+	global $_POST;
+	$mailTo = 'wyborowiec@gmail.com';
+	$mailFrom = $_POST['kech_email'];
+	$subject = $_POST['kech_subject'];
+	$name = $_POST['kech_name'];
+	$tel = $_POST['kech_tel'];
+	$message = $_POST['kech_msg']."\n\n$name\ntel: $tel";
+	$to_self = isset($_POST['kech_to_self']);
+			
+	mail($mailTo, $subject, $message, "From: ".$mailFrom);
+	if ($to_self) {
+		mail($mailFrom, $subject, $message);
+	}
+}
+
 function get_search($submit_class = "") {?>
 <form role="search" method="get" action="<?php echo home_url( '/' ); ?>">
 	<input type="search" placeholder="Szukany tekst" value="<?php echo get_search_query() ?>" name="s" size="25"/>

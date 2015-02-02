@@ -37,6 +37,11 @@ input {
 	font-size: 16px;
 } 
 
+textarea {
+	border: 0px; 
+	font-size: 16px;
+}
+
 #container {
 	width:1024px;
 	margin-left: auto;
@@ -506,6 +511,10 @@ h1 {
 	clear: left;
 }
 
+.clear_left {
+	clear: left;
+}
+
 .follow_link2 {
 	color: #ffffff;
 	text-decoration: none;
@@ -528,5 +537,70 @@ h1 {
 .kazania_list {
 	margin-top: 30px;
 }
+
+.contact_info {
+	float: left;
+	width: 50%;
+}
+
+.contact_form {
+	float: left;
+	width: 50%;
+}
+
+.contact_form_content {
+	background-color: #c7c6c2;
+	padding: 40px;
+	font-size: 16px;
+}
+
+.contact_form_content_input {
+	width: 100%;
+	padding: 2px;
+	margin-bottom: 10px;
+}
+
+.contact_form_content textarea {
+	width: 100%;
+	resize: none;
+	height: 230px;
+	margin-bottom: 15px;
+}
+
+.contact_form_content input[type=checkbox] {
+	position: relative;
+	top: 2px;
+}
+
+.contact_form_content_label {
+	margin-top: 0px;
+	margin-bottom: 10px;
+	display: block;
+}
+
+.contact_form_content_label2 {
+	
+}
+
+.contact_form_content_button {
+	background-color: #3d3b2f;
+	color: #ffffff;
+	margin: 0;
+	width: 95px;
+	float: right;
+	height: 20px;
+}
+
+.contact_info p {
+	font-size: 16px;
+}
+
+.contact_info iframe {
+	margin-top: 50px;
+	width: 430px;
+	height: 390px;
+}
+
+
 
 

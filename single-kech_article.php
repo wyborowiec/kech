@@ -1,8 +1,4 @@
 <?php
-/*
-Template Name: Kech Article
-*/
-
 get_header(); ?>
 
 <div class="content_padding">
