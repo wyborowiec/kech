@@ -81,9 +81,8 @@
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet leo tristique, malesuada elit vitae, efficitur ipsum. Aenean venenatis aliquet tincidunt. Nulla sed aliquet ligula, tempor ultrices leo. Pellentesque ut erat at diam imperdiet blandit. Donec efficitur a sem ac molestie. Nunc euismod lorem in sapien ultricies faucibus. Nam quam nisi, semper et justo ut, malesuada cursus elit. Praesent a turpis augue. Sed eu elit ut ex varius mattis. Nunc fringilla nunc a interdum venenatis. In mattis erat ac tristique pulvinar.
 
 Integer non elit gravida, blandit lorem a, pellentesque nisi. Cras at leo at purus lobortis mollis. Fusce in consectetur ante. Donec eu ligula et sapien laoreet consequat. Nullam id odio ac mauris hendrerit pretium. Integer eu tempus nisi. Duis non metus quis massa euismod iaculis. Proin id pellentesque risus, ac elementum eros.
+
 </div>
-
-
 
 <?php 
 	get_footer()
