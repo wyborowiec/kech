@@ -7,10 +7,11 @@
 <link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet" type="text/css">
 <?php wp_head(); ?>
 </head>
-<body bgcolor="#e4dcad">
+<body background="<?php echo get_template_directory_uri(); ?>/pics/tlo.gif">
 <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/datetimepicker/jquery.datetimepicker.css"/ >
 <div id="container">
-<img src="<?php bloginfo('template_directory'); ?>/baner.jpg" width="1024"/>
+<img src="<?php bloginfo('template_directory'); ?>/pics/banner.jpg" width="1024"/>
+<a href="plan"><img id="calendar" src="<?php bloginfo('template_directory'); ?>/pics/kalendarz.png""/></a>
 <div id="header">
 
 <?php 

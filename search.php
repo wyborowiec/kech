@@ -23,11 +23,10 @@ function get_query_sql(){
 			 (meta_value LIKE '%$s%')
 			 )
 		 AND 
-			(
-			 (post_type in ( 'kech_article', 'kech_event', 'kech_gallery' ) AND post_status='publish')
-			 OR 
-			 (post_type = 'attachment' AND post_mime_type = 'audio/mpeg' AND post_status='inherit')
-			)
+			
+			 post_type in ( 'kech_article', 'kech_event', 'kech_gallery', 'kech_audio' ) AND post_status='publish'
+
+			
 		 ORDER BY post_title LIKE '%$s%' DESC, meta_value LIKE '%$s%' DESC, post_date DESC
 		 LIMIT $limit
 		 OFFSET $offset
@@ -46,6 +45,9 @@ function the_kech_category() {
 			break;
 		case "kech_gallery":
 			$category = "Galeria";
+			break;
+		case "kech_audio":
+			$category = "Kazania";
 			break;
 	}
 	echo $category;

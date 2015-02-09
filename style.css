@@ -50,6 +50,7 @@ textarea {
 	margin-bottom: 40px;
 	border: 1px transparent black;
 	background-color: #ffffff;
+	font-size: 16px;
 }
 
 #menu1 {
@@ -140,7 +141,7 @@ textarea {
 	padding-right: 40px;
 	padding-top: 10px;
 	padding-bottom: 40px;
-	font-size: 12px;
+
 }
 
 .content_padding h1 {
@@ -344,6 +345,7 @@ h1 {
 	padding-bottom: 5px;
 	padding-left: 15px;
 	padding-right: 15px;
+	font-size: 14px;
 }
 
 .float_right {
@@ -606,4 +608,16 @@ h1 {
 	height: 600px;
 }
 
+.box_tag_caption  {
+	visibility: hidden;
+}
 
+.box_tag_content  {
+	visibility: hidden;
+}
+
+#calendar {
+	position: absolute;
+	left: 1020px;
+	top: 105px;
+}

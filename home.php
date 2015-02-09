@@ -55,12 +55,11 @@
 	<h3>Najnowsze kazania</h3>
 	<?php
 		$query = new WP_Query( 
-			array( 
-				'post_mime_type' => 'audio',
-				'post_type' => 'attachment', 
-				'post_status'=>'all',
-				'posts_per_page' => 5
-			) );
+		array( 
+			'post_type' => 'kech_audio', 
+			'post_status'=> 'publish',
+			'posts_per_page' => 5
+		) );
 		while ($query->have_posts()) : $query->the_post();
 			$id = $post->ID;
 			$link = wp_get_shortlink($id);
@@ -68,19 +67,24 @@
 	?>
 		<p>"<?php echo $post->post_title; ?>"</br>
 		<?php echo $author; ?>
-		<a id="art-link" href="<?php echo $link; ?>"> &rsaquo;&rsaquo;</a></li>	
+		</li>	
 		</p>
 	<?php
 		endwhile;
 		wp_reset_postdata();
+		
 	?>
+	<a id="art-link" href="category/kazania">posłuchaj &rsaquo;&rsaquo;</a>
   </div>
 </div>
 
 <div id="box2" class="left_right_padding">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet leo tristique, malesuada elit vitae, efficitur ipsum. Aenean venenatis aliquet tincidunt. Nulla sed aliquet ligula, tempor ultrices leo. Pellentesque ut erat at diam imperdiet blandit. Donec efficitur a sem ac molestie. Nunc euismod lorem in sapien ultricies faucibus. Nam quam nisi, semper et justo ut, malesuada cursus elit. Praesent a turpis augue. Sed eu elit ut ex varius mattis. Nunc fringilla nunc a interdum venenatis. In mattis erat ac tristique pulvinar.
+ <p>Drogi Przyjacielu!</p>
+   <p>Zapraszam Cię serdecznie do przeglądania naszej strony internetowej. Znajdziesz tu kilka cennych informacji o naszym Kościele, jak również wiadomości na temat prowadzonych przez nas służb. Tutaj dowiesz się o planowanych w naszej Wspólnocie wydarzeniach oraz terminach spotkań i nabożeństw.
+  Przede wszystkim jednak mam nadzieję, że zajrzysz do naszej czytelni by rozważać Pismo Święte i zastanawiać się nad stanem swojej duszy. Wierzę, że treści zawarte w niej nie tylko dadzą Ci poznanie Słowa, ale także przybliżą Cię do osoby Jezusa Chrystusa i przyniosą do twojego życia wiele Bożego pokoju, radości i nadziei.
 
-Integer non elit gravida, blandit lorem a, pellentesque nisi. Cras at leo at purus lobortis mollis. Fusce in consectetur ante. Donec eu ligula et sapien laoreet consequat. Nullam id odio ac mauris hendrerit pretium. Integer eu tempus nisi. Duis non metus quis massa euismod iaculis. Proin id pellentesque risus, ac elementum eros.
+Niech Bóg Cię błogosławi.</p>
+      <p>Pastor Tomasz Chyłka</p>
 
 </div>
 

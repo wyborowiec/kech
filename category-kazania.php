@@ -11,14 +11,6 @@ get_header(); ?>
 
 <?php
 	$paged = get_paged();
-	/*$query = new WP_Query( 
-		array( 
-			'post_type' => 'attachment',
-			'post_mime_type' => 'audio',
-			'paged' => $paged,
-			'post_status'=> 'inherit',
-			'posts_per_page' => 2
-		) );*/
 	$query = new WP_Query( 
 		array( 
 			'post_type' => 'kech_audio', 
@@ -31,6 +23,11 @@ get_header(); ?>
 			$id = $post->ID;
 			$author = get_post_meta($id, "author", true);
 			$date = get_post_meta($id, "event_date", true);
+			$content = get_the_content();
+			$media = get_attached_media('audio');
+			$audio = array_pop($media);
+			$audio_url = wp_get_attachment_url( $audio->ID );
+			//echo "--->" . $audio_url;
 	?>
 	<div class="kazania_list">
 		<div class="item_title" >
@@ -50,7 +47,8 @@ get_header(); ?>
 		</div>
 		<div id="<?php echo $id; ?>" class="kazania_player">
 			<?php 
-				the_content();
+				//the_content();
+				echo do_shortcode("[audio mp3='$audio_url']");
 			?>
 		</div>
 	</div>

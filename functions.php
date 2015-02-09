@@ -1,5 +1,7 @@
 <?php
 
+
+
 function send_mail(){
 	global $_POST;
 	$mailTo = 'wyborowiec@gmail.com';
