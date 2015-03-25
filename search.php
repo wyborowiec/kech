@@ -77,7 +77,12 @@ function the_kech_category() {
 				foreach ($query_result as $post): 
 					setup_postdata($post);
 					$id = $post->ID;
-					$shortlink = wp_get_shortlink();
+					$post_type = get_post_type($id);
+					if ($post_type == 'kech_audio') {
+						$shortlink = "category/kazania?post_id=$id";
+					} else {
+						$shortlink = wp_get_shortlink();
+					}
 					$date = get_the_date("j.m.Y");
 			?>
 			<div class="search_result">

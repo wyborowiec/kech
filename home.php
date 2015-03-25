@@ -12,7 +12,7 @@
 			array( 
 				'post_type' => 'kech_article', 
 				'post_status' => 'publish',
-				'posts_per_page' => 5
+				'posts_per_page' => 4
 			) );
 		while ($query->have_posts()) : $query->the_post();
 			$id = $post->ID;
@@ -36,13 +36,22 @@
 			array( 
 				'post_type' => 'kech_event', 
 				'post_status' => 'publish',
-				'posts_per_page' => 5
+				'posts_per_page' => 4
 			) );
 		while ($query->have_posts()) : $query->the_post();
 			$id = $post->ID;
 			$link = wp_get_shortlink($id);
+			$start_date = get_post_meta($id, "event_start_date", true);
+			$start_time = get_post_meta($id, "event_start_time", true);
 	?>
 		<p><?php echo "\"" . $post->post_title . "\""; ?></br>
+		<?php 
+			echo $start_date; 
+			if ($start_time) {
+				echo ", $start_time";
+			}
+		
+		?>
 		<a id="art-link" href="<?php echo $link; ?>">przeczytaj &rsaquo;&rsaquo;</a></p>	
 	<?php
 		endwhile;
@@ -58,7 +67,7 @@
 		array( 
 			'post_type' => 'kech_audio', 
 			'post_status'=> 'publish',
-			'posts_per_page' => 5
+			'posts_per_page' => 4
 		) );
 		while ($query->have_posts()) : $query->the_post();
 			$id = $post->ID;

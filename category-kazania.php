@@ -11,13 +11,21 @@ get_header(); ?>
 
 <?php
 	$paged = get_paged();
-	$query = new WP_Query( 
-		array( 
+	if (isset($_GET['post_id'])){
+		$post_id = $_GET['post_id'];
+	} else {
+		$post_id = null;
+	}
+	$query_args = array( 
 			'post_type' => 'kech_audio', 
 			'post_status'=> 'publish',
 			'posts_per_page' => 10,
 			'paged' => $paged
-		) );
+		);
+	if ($post_id) {
+		$query_args['p'] = $post_id;
+	}
+	$query = new WP_Query($query_args);
 	
 	while ($query -> have_posts() ) : $query -> the_post();
 			$id = $post->ID;
@@ -55,7 +63,9 @@ get_header(); ?>
 	<?php
 	endwhile;
 	wp_reset_postdata();
-	the_pagination($query);
+	if (!$post_id) {
+		the_pagination($query);
+	}
 	
 ?>
 

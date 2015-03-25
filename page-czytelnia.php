@@ -17,8 +17,12 @@ get_header(); ?>
 						$author = get_post_meta($id, "author", true);
 						echo $author;
 					?></h2>
+					<div class="post_content">
 			<?php
 					the_content();
+			?>
+					</div>
+			<?php
 				endwhile;
 			?>
 

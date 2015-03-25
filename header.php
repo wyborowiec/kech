@@ -11,7 +11,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/datetimepicker/jquery.datetimepicker.css"/ >
 <div id="container">
 <img src="<?php bloginfo('template_directory'); ?>/pics/banner.jpg" width="1024"/>
-<a href="plan"><img id="calendar" src="<?php bloginfo('template_directory'); ?>/pics/kalendarz.png""/></a>
+<div id="calendar_div"><a id="calendar" href="calendar-2"><img src="<?php bloginfo('template_directory'); ?>/pics/kalendarz.png""/></a></div>
+
 <div id="header">
 
 <?php 
