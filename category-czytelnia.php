@@ -13,7 +13,7 @@ get_header(); ?>
 
 
 		<div id="content" class="content_padding" role="main">
-			<h1>CZYTELNIA</h1>
+			<h1>ARTYKUŁY</h1>
 			<?php
 				
 				$paged = get_paged();
