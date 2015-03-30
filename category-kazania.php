@@ -31,11 +31,15 @@ get_header(); ?>
 			$id = $post->ID;
 			$author = get_post_meta($id, "author", true);
 			$date = get_post_meta($id, "event_date", true);
-			$content = get_the_content();
-			$media = get_attached_media('audio');
-			$audio = array_pop($media);
-			$audio_url = wp_get_attachment_url( $audio->ID );
-			//echo "--->" . $audio_url;
+			
+			$matches = array();
+			$is_match = preg_match('/\[audio.*mp3="(.*)".*\]/', $post->post_content, $matches);
+			if ($is_match){
+				$audio_url = $matches[1];
+				//echo do_shortcode('$matches[0]');
+			} else {
+				die("No gallery found in the post content");
+			}
 	?>
 	<div class="kazania_list">
 		<div class="item_title" >
