@@ -132,8 +132,8 @@ textarea {
 }
 
 .left_right_padding {
-	padding-left: 40px;
-	padding-right: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .content_padding {
@@ -161,8 +161,11 @@ textarea {
 #box2 {
 	padding-top: 30px;
 	padding-bottom: 30px;
+	padding-left: 40px;
+	padding-right: 40px;
 	text-align: justify;
     text-justify: inter-word;
+	font-size: 14px;
 }
 
 .box_tag {
@@ -184,7 +187,7 @@ textarea {
 .box_search {
 	margin-top: 5px;
 	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-bottom: 8px;
 	background-color: #3d3b2f;
 	color: #ffffff;
 }
@@ -196,17 +199,47 @@ textarea {
 	border: none;
 }
 
+.search_form {
+	float: left;
+	width: 300px;
+	color: #ffffff;
+}
+
+.search_links a{
+	float: right;
+	color: #ffffff;
+	text-decoration: none;
+	margin-left: 20px;
+	font-size: 14px;
+}
+
+.search_close {
+	clear: both;
+}
+
+.fb_icon {
+	margin-bottom: 0px;
+}
+
 .shadow {
 	box-shadow: 0px 0px 10px 0px #888888;
 }
 
-#header .main-menu {
+/*#menu-menu-1 .menu ul {
+	margin: 0px;
+	padding: 0px;
+}*/
+
+.menu {
+	margin-bottom: 7px;
+	margin-top: 7px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 	background-color: #3d3b2f;
-	padding: 10px;
-	
-} 
-#header .main-menu ul {} 
-#header .main-menu ul ul {} 
+}
+
 #header .main-menu li {
 	display: inline;
 	color: #d3c274;
@@ -215,12 +248,21 @@ textarea {
 	font-size: 14px;
 	text-decoration: none;
 	font-weight: bold;
-	padding-right: 73px;
 	color: #d3c274;
 } 
-#header .main-menu li ul {} 
-#header .main-menu li li {} 
-#header .main-menu li li a {} 
+
+.main-menu-it1 {
+	margin-left: 20px;
+}
+
+.main-menu-itn {
+	margin-left: 88px;
+}
+
+.main-menu-it-last {
+	float: right;
+	margin-right: 20px;
+}
 
 .page-link  {
 	font-size: 12px;
@@ -261,7 +303,6 @@ h1 {
 }
 
 .column p {
-	margin-left: 15px;
 	margin-bottom: 8px;
 	font-size: 16px;
 }
@@ -662,3 +703,4 @@ h1 {
 	margin-bottom: 200px;
 	margin-left: 20px;
 }
+

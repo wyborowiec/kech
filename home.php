@@ -5,7 +5,7 @@
 
 <div class="columns-or-whatever">
   <div class="column">
-	<h3>Najnowsze artykuły</h3>
+	<h3>NAJNOWSZE ARTYKUŁY</h3>
 
 	<?php
 		$query = new WP_Query( 
@@ -29,7 +29,7 @@
 
   </div>
   <div class="column">
-	<h3>Nadchodzące wydarzenia</h3>
+	<h3>NADCHODZĄCE WYDARZENIA</h3>
 
 	<?php
 		$query = new WP_Query( 
@@ -61,7 +61,7 @@
 
   </div>
   <div class="column">
-	<h3>Najnowsze kazania</h3>
+	<h3>NAJNOWSZE KAZANIA</h3>
 	<?php
 		$query = new WP_Query( 
 		array( 
