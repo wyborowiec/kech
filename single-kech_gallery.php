@@ -6,17 +6,13 @@ get_header(); ?>
 				while ( have_posts() ) : the_post(); 
 					?>
 						<h1><?php the_title(); ?></h1>
+						<div class="post_content">
 					<?php
-						$matches = array();
-						$is_match = preg_match('/\[gallery.*ids="(.*)".*\]/', $post->post_content, $matches);
-						if ($is_match){
-							$ids = $matches[1];
-							echo do_shortcode('[gallery columns="4" link="file" ids="'.$ids.'"]');
-						} else {
-							die("No gallery found in the post content");
-						}
+						$modified_content = preg_replace('/\[gallery.*ids="(.*)".*\]/', '[gallery columns="4" link="file" ids="$1"]', $post->post_content);
+						echo do_shortcode($modified_content);
 				endwhile;
-			?>
+					?>
+						</div>
 
 </div>
 
