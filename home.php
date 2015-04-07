@@ -44,7 +44,7 @@
 		while ($query->have_posts()) : $query->the_post();
 			$id = $post->ID;
 			$link = wp_get_shortlink($id);
-			$start_date = get_post_meta($id, "event_start_date", true);
+			$start_date = format_date(get_post_meta($id, "event_start_date", true));
 			$start_time = get_post_meta($id, "event_start_time", true);
 	?>
 		<p><?php echo "\"" . $post->post_title . "\""; ?></br>

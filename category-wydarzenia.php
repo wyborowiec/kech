@@ -31,7 +31,7 @@ get_header(); ?>
 					$id = get_the_ID();
 					$author = get_post_meta($id, "author", true);
 					$title = get_the_title();
-					$date = get_post_meta($id, "event_start_date", true);
+					$date = format_date(get_post_meta($id, "event_start_date", true));
 					$time = get_post_meta($id, "event_start_time", true);
 					$shortlink = wp_get_shortlink();
 					?>

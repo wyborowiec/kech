@@ -33,7 +33,7 @@ get_header(); ?>
 	while ($query -> have_posts() ) : $query -> the_post();
 			$id = $post->ID;
 			$author = get_post_meta($id, "author", true);
-			$date = get_post_meta($id, "event_date", true);
+			$date = format_date(get_post_meta($id, "event_date", true));
 			
 			$matches = array();
 			$is_match = preg_match('/\[audio.*mp3="(.*)".*\]/', $post->post_content, $matches);

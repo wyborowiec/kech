@@ -1,6 +1,8 @@
 <?php
 
-
+function format_date($date) {
+	return preg_replace('/(\d{4})-(\d{2})-(\d{2})/', '$3.$2.$1', $date);
+}
 
 function send_mail(){
 	global $_POST;

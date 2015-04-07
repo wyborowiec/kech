@@ -7,7 +7,7 @@ get_header(); ?>
 				// Start the Loop.
 				while ( have_posts() ) : the_post(); 
 					$id = $post->ID;
-					$start_date = get_post_meta($id, "event_start_date", true);
+					$start_date = format_date(get_post_meta($id, "event_start_date", true));
 					$start_time = get_post_meta($id, "event_start_time", true);
 					?>
 						<h1><?php the_title(); ?></h1>
