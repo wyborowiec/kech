@@ -20,7 +20,10 @@ get_header(); ?>
 			'post_type' => 'kech_audio', 
 			'post_status'=> 'publish',
 			'posts_per_page' => 10,
-			'paged' => $paged
+			'paged' => $paged,
+			'order'		=> 'DESC',
+			'orderby'	=> 'meta_value',
+			'meta_key' 	=> 'event_date'
 		);
 	if ($post_id) {
 		$query_args['p'] = $post_id;

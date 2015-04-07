@@ -197,15 +197,6 @@ function add_kech_audio_meta_boxes($post) {
 	add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'kech_audio_meta_box_callback', 'kech_audio' );
 }
 
-/*function prfx_custom_meta() {
-	global $post;
-	if ($post->post_type == 'attachment' and $post->post_mime_type == 'audio/mpeg') {	
-		remove_meta_box( 'attachment-id3' , 'attachment' , 'normal' ); 
-		add_meta_box( 'prfx_meta', __( 'Dodatkowe informacje', 'prfx-textdomain' ), 'kazania_meta_callback', 'attachment' );
-	}
-}
-add_action( 'add_meta_boxes', 'prfx_custom_meta' );*/
-
 function kech_article_meta_box_callback( $post ) {
 		wp_nonce_field( basename( __FILE__ ), 'prfx_nonce' );
 		$prfx_stored_meta = get_post_meta( $post->ID );
@@ -228,7 +219,7 @@ function kech_audio_meta_box_callback( $post ) {
 		<p>
 			<label for="meta-text" class="prfx-row-title"><?php _e( 'Data', 'prfx-textdomain' )?></label>
 			<br>
-			<input type="text" name="event_date" class="datepicker" value="<?php if ( isset ( $prfx_stored_meta['event_date'] ) ) echo $prfx_stored_meta['event_date'][0]; ?>" />
+			<input type="text" name="event_date" class="datepicker" value="<?php if ( isset ( $prfx_stored_meta['event_date'] ) ) echo $prfx_stored_meta['event_date'][0]; ?>" nonempty/>
 		</p>
 		<p>
 			<label for="meta-text" class="prfx-row-title"><?php _e( 'Autor', 'prfx-textdomain' )?></label>
@@ -244,26 +235,6 @@ function link_datetimepicker_css() {
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/datetimepicker/jquery.datetimepicker.css"/ >
 	<?php
 }
-
-/*function kazania_meta_callback( $post ) {
-		wp_nonce_field( basename( __FILE__ ), 'prfx_nonce' );
-		$prfx_stored_meta = get_post_meta( $post->ID );
-		link_datetimepicker_css();
-		?>
-		<p>
-			<label for="meta-text" class="prfx-row-title"><?php _e( 'Data', 'prfx-textdomain' )?></label>
-			<br>
-			<input type="text" name="event_date" id="datepicker" value="<?php if ( isset ( $prfx_stored_meta['event_date'] ) ) echo $prfx_stored_meta['event_date'][0]; ?>" />
-		</p>
-		<p>
-			<label for="meta-text" class="prfx-row-title"><?php _e( 'Autor', 'prfx-textdomain' )?></label>
-			<br>
-			<input type="text" name="author" id="meta-text" value="<?php if ( isset ( $prfx_stored_meta['author'] ) ) echo $prfx_stored_meta['author'][0]; ?>" nonempty/>
-		</p>
-		
- 
-    <?php
-}*/
 
 function kech_event_meta_box_callback( $post ) {
 		wp_nonce_field( basename( __FILE__ ), 'prfx_nonce' );

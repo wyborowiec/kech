@@ -36,7 +36,10 @@
 			array( 
 				'post_type' => 'kech_event', 
 				'post_status' => 'publish',
-				'posts_per_page' => 4
+				'posts_per_page' => 4,
+				'order'		=> 'ASC',
+				'orderby'	=> 'meta_value',
+				'meta_key' 	=> 'event_start_date'
 			) );
 		while ($query->have_posts()) : $query->the_post();
 			$id = $post->ID;
@@ -67,7 +70,10 @@
 		array( 
 			'post_type' => 'kech_audio', 
 			'post_status'=> 'publish',
-			'posts_per_page' => 4
+			'posts_per_page' => 4,
+			'order'		=> 'DESC',
+			'orderby'	=> 'meta_value',
+			'meta_key' 	=> 'event_date'
 		) );
 		while ($query->have_posts()) : $query->the_post();
 			$id = $post->ID;

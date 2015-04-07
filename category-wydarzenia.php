@@ -22,7 +22,10 @@ get_header(); ?>
 						'post_type' => 'kech_event', 
 						'post_status'=> 'publish',
 						'posts_per_page' => 10,
-						'paged' => $paged
+						'paged' => $paged,
+						'order'		=> 'ASC',
+						'orderby'	=> 'meta_value',
+						'meta_key' 	=> 'event_start_date'
 					) );
 				while ($query->have_posts() ) : $query->the_post();
 					$id = get_the_ID();
