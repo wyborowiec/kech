@@ -39,9 +39,8 @@ get_header(); ?>
 			$is_match = preg_match('/\[audio.*mp3="(.*)".*\]/', $post->post_content, $matches);
 			if ($is_match){
 				$audio_url = $matches[1];
-				//echo do_shortcode('$matches[0]');
 			} else {
-				die("No gallery found in the post content");
+				die("Brak pliku audio");
 			}
 	?>
 	<div class="kazania_list">

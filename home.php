@@ -19,8 +19,8 @@
 			$link = wp_get_shortlink($id);
 			$author = get_post_meta($id, "author", true);
 	?>
-		<p><?php echo "\"" . $post->post_title . "\""; ?></br>
-		<?php echo $author; ?><a id="art-link" href="<?php echo $link; ?>">przeczytaj &rsaquo;&rsaquo;</a></p>	
+		<div class="column_title"><?php echo "\"" . $post->post_title . "\""; ?></div>
+		<div class="column_details"><?php echo $author; ?><a id="art-link" href="<?php echo $link; ?>">przeczytaj &rsaquo;&rsaquo;</a></div>
 	<?php
 		endwhile;
 		wp_reset_postdata();
@@ -47,15 +47,16 @@
 			$start_date = format_date(get_post_meta($id, "event_start_date", true));
 			$start_time = get_post_meta($id, "event_start_time", true);
 	?>
-		<p><?php echo "\"" . $post->post_title . "\""; ?></br>
-		<?php 
+		<div class="column_title"><?php echo "\"" . $post->post_title . "\""; ?></div>
+		<div class="column_details"><?php 
 			echo $start_date; 
 			if ($start_time) {
 				echo ", $start_time";
 			}
 		
 		?>
-		<a id="art-link" href="<?php echo $link; ?>">przeczytaj &rsaquo;&rsaquo;</a></p>	
+		<a id="art-link" href="<?php echo $link; ?>">przeczytaj &rsaquo;&rsaquo;</a>	
+		</div>
 	<?php
 		endwhile;
 		wp_reset_postdata();
@@ -80,10 +81,8 @@
 			$link = wp_get_shortlink($id);
 			$author = get_post_meta($id, "author", true);
 	?>
-		<p>"<?php echo $post->post_title; ?>"</br>
-		<?php echo $author; ?>
-		</li>	
-		</p>
+		<div class="column_title">"<?php echo $post->post_title; ?>"</div>
+		<div class="column_details"><?php echo $author; ?> </div>
 	<?php
 		endwhile;
 		wp_reset_postdata();
@@ -94,12 +93,18 @@
 </div>
 
 <div id="box2" class="left_right_padding">
- <p>Drogi Przyjacielu!</p>
-   <p>Zapraszam Cię serdecznie do przeglądania naszej strony internetowej. Znajdziesz tu kilka cennych informacji o naszym Kościele, jak również wiadomości na temat prowadzonych przez nas służb. Tutaj dowiesz się o planowanych w naszej Wspólnocie wydarzeniach oraz terminach spotkań i nabożeństw.
-  Przede wszystkim jednak mam nadzieję, że zajrzysz do naszej czytelni by rozważać Pismo Święte i zastanawiać się nad stanem swojej duszy. Wierzę, że treści zawarte w niej nie tylko dadzą Ci poznanie Słowa, ale także przybliżą Cię do osoby Jezusa Chrystusa i przyniosą do twojego życia wiele Bożego pokoju, radości i nadziei.
-
-Niech Bóg Cię błogosławi.</p>
-      <p>Pastor Tomasz Chyłka</p>
+<div class="home_invite">
+	<img src="<?php bloginfo('template_directory'); ?>/pics/tomasz.jpg" width="105px"/>
+</div>
+<div>
+	 <p>Drogi Przyjacielu!</p>
+	   <p>Zapraszam Cię do przeglądania naszej strony internetowej. Znajdziesz tutaj kilka ważnych informacji na temat naszego Kościoła, jego historii i zasad wiary. Tutaj dowiesz się o zbliżających się w naszej Wspólnocie wydarzeniach i nabożeństwach, na które Cię serdecznie zapraszamy. Przede wszystkim jednak mam nadzieję, że zajrzysz do naszej czytelni i odwiedzisz archiwum kazań, by wspólnie z nami rozważać Pismo Święte i zastanawiać się nad stanem swojej duszy. Wierzę, że treści tam zawarte, nie tylko przyniosą Ci odpowiedzi na nurtujące Cię pytania, ale również przybliżą Cię do osoby Jezusa Chrystusa, który przynosi do naszego życia wiele pokoju, radości i nadziei.</p>
+	 
+	<p style="text-align: center;">"Szukajcie Pana, gdy się pozwala znaleźć, wzywajcie Go, dopóki jest blisko!" Księga Izajasza 66,5 Biblia Tysiąclecia</p>
+</div>
+ 
+<p>Niech Bóg Cię błogosławi, <br>
+Pastor Tomasz Chyłka</p>
 
 </div>
 

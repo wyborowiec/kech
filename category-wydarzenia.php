@@ -37,12 +37,13 @@ get_header(); ?>
 					?>
 					<div class="article_item">
 					<div class="item_title">
-					<h2><?php the_title(); ?></h2>
+					<h2><a href="<?php echo $shortlink ?>"><?php the_title(); ?></a></h2>
 					</div>
 					<div class="article_item_thumb">
-					<?php 
+					<a href="<?php echo $shortlink ?>"><?php 
 					echo get_the_post_thumbnail($id, 'article-thumbnail');
 					?>
+					</a>
 					</div>
 					<div class="article_item_summary">
 					<h1>

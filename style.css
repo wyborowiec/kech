@@ -288,12 +288,14 @@ h1 {
 .column *{
 	list-style-type: none;
 	color: #ffffff;
+	font-size: 14px;
 }
 
 .column h3 {
 	font-weight: bold;
 	font-size: 18px;
 	margin-top: 15px;
+	color: #ddd4b3;
 }
 
 .column li {
@@ -302,18 +304,23 @@ h1 {
 	font-size: 16px;
 }
 
-.column p {
-	margin-bottom: 8px;
-	font-size: 16px;
-}
-
 .column a {
 	text-decoration: none;
+}
+
+.column_title {
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+.column_details {
+	
 }
 
 #art-link {
 	position: relative;
     float: right;
+	color: #ddd4b3;
 }
 
 #more-link {
@@ -352,14 +359,18 @@ h1 {
 	overflow: hidden;
 }
 
+.article_item  a {
+	text-decoration: none;
+}
+
 .article_item_thumb {
 	float: left;
-	width: 11%;
+	width: 12.5%;
 }
 
 .article_item_summary { 	
 	float: right;
-	width: 89%;
+	width: 87.5%;
 }
 
 .article_item_summary h1 {
@@ -698,9 +709,13 @@ h1 {
 }
 
 .fallback {
-	font-size: 20px;
+	font-size: 27px;
 	margin-top: 200px;
 	margin-bottom: 200px;
 	margin-left: 20px;
 }
 
+.home_invite {
+	float: left;
+	margin: 17px 10px 0px 0px;
+}
