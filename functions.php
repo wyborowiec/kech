@@ -272,41 +272,16 @@ function prfx_meta_save( $post_id ) {
         return;
     }
 	
-	$meta_fields = array('author', 'event_start_date', 'event_start_time', 'event_end_date');
+	$meta_fields = array('author', 'event_start_date', 'event_start_time', 'event_end_date', 'event_date');
 	foreach ($meta_fields as $i => $meta_field) {
 		if( isset( $_POST[$meta_field] ) ) {
 			update_post_meta( $post_id, $meta_field, sanitize_text_field( $_POST[$meta_field] ) );
 		}
 	}
  
- /*
-    // Checks for input and sanitizes/saves if needed
-    if( isset( $_POST[ 'event_date' ] ) ) {
-        update_post_meta( $post_id, 'event_date', sanitize_text_field( $_POST[ 'event_date' ] ) );
-    }
-	if( isset( $_POST[ 'event_time' ] ) ) {
-        update_post_meta( $post_id, 'event_time', sanitize_text_field( $_POST[ 'event_time' ] ) );
-    }
-	
-	if( isset( $_POST[ 'author' ] ) ) {
-        update_post_meta( $post_id, 'author', sanitize_text_field( $_POST[ 'author' ] ) );
-    }*/
- 
-}
-
-function validate_post( $post_id ) {
-	$post = get_post($post_id);
-	if ($post->post_type == 'kech_audio') {
-		$matches = preg_match('/^\s*\[audio mp3=".+"\]\[\/audio\]\s*$/', $post->post_content);
-		if (!$matches) {
-			wp_die("Zawartością wpisu powinien być tylko i wyłącznie plik audio.", "Błędna zawartość wpisu");
-			//return;
-		}
-	}
 }
 
 add_action( 'save_post', 'prfx_meta_save' );
-add_action( 'save_post', 'validate_post' );
 
 function register_my_menu() {
   register_nav_menu('header-menu',__( 'Header Menu' ));
