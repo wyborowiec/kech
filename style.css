@@ -256,7 +256,7 @@ textarea {
 }
 
 .main-menu-itn {
-	margin-left: 88px;
+	margin-left: 61px;
 }
 
 .main-menu-it-last {
@@ -718,4 +718,20 @@ h1 {
 .home_invite {
 	float: left;
 	margin: 17px 10px 0px 0px;
+}
+
+.onas h2 {
+	position: relative;
+	left: -40px;
+	padding-left: 40px;
+	width: 1024px;
+}
+
+.onas {
+	text-align: justify;
+}
+
+.onas li {
+	position: relative;
+	left: -20px;
 }
