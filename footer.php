@@ -15,7 +15,7 @@
 	</div>
 	<div class="search_links">
 		<a href="https://www.facebook.com/pages/Kechpszczyna/151944431531784" target="_blank"><img class="fb_icon" src="<?php bloginfo('template_directory'); ?>/pics/fb.png" width="20" height="20"/></a>
-		<a href="http://www.kech.pl/pszczyna/" target="_blank">Przejdź do starej wersji strony</a>
+		<a href="https://www.youtube.com/channel/UCBjOjcfzKhm_QkHWS9fy6Fw" target="_blank"><img class="fb_icon" src="<?php bloginfo('template_directory'); ?>/pics/yt.png" width="20" height="20"/></a>
 	</div>
 	<div class="search_close" />
 </div>
