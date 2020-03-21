@@ -1,7 +1,7 @@
 ﻿<?php 
 	get_header()
 ?>
-<?php echo do_shortcode("[metaslider id=37]"); ?>
+<?php echo do_shortcode("[metaslider id=4]"); ?>
 
 <div class="columns-or-whatever">
   <div class="column">
@@ -98,7 +98,10 @@
 </div>
 <div>
 	 <p>Drogi Przyjacielu!</p>
-	   <p>Zapraszam Cię do przeglądania naszej strony internetowej. Znajdziesz tutaj kilka ważnych informacji na temat naszego Kościoła, jego historii i zasad wiary. Tutaj dowiesz się o zbliżających się w naszej Wspólnocie wydarzeniach i nabożeństwach, na które Cię serdecznie zapraszamy. Przede wszystkim jednak mam nadzieję, że zajrzysz do naszej czytelni i odwiedzisz archiwum kazań, by wspólnie z nami rozważać Pismo Święte i zastanawiać się nad stanem swojej duszy. Wierzę, że treści tam zawarte, nie tylko przyniosą Ci odpowiedzi na nurtujące Cię pytania, ale również przybliżą Cię do osoby Jezusa Chrystusa, który przynosi do naszego życia wiele pokoju, radości i nadziei.</p>
+	   <p>W czasach epidemii koronawirusa wielu z nas zastanawia się więcej nad wartością życia, jaki jest jego sens, dlaczego tutaj jesteśmy i dokąd zmierzamy. Jaką wartość ma moje życie dla Boga i co On myśli o tym co dzieje się wokół mnie? Mamy więc wyjątkową okazję, aby skłonić swe serca i umysły do refleksji, na które wielu z nas nie stać było wcześniej z powodu zabiegania, pracy, konsumpcji i innych nie cierpiących zwłoki spraw życia codziennego.</p> 
+<p>Skoro Twój świat się zatrzymał na moment – może i Ty Przyjacielu zechcesz!</p>
+<p>Zapraszam Cię więc do wejścia na baner „Życie to więcej“. Znajdziesz tam wiele cennych myśli i artykułów wzbogacających duszę oraz przynoszących odpowiedzi na trudne pytania. Przede wszystkim jednak mam nadzieję, że zajrzysz do naszej czytelni i odwiedzisz archiwum kazań, by wspólnie z nami rozważać Pismo Święte. Tytuły kazań i artykułów pomogą znaleźć poszukiwane tematy. Jestem przekonany, że treści tam zawarte, przybliżą Cię do osoby Jezusa Chrystusa, który przynosi do naszego życia prawdziwy pokój w dniach paniki, prawdziwą radość w dniach smutku i niebiańską nadzieję w chwilach beznadziei.</p>
+<p>Zapraszamy na nabożeństwo nadawane online poprzez nasz kanał <a href="https://www.facebook.com/pages/Kechpszczyna/151944431531784" target="_blank">FB kechpszczyna</a> oraz do odsłuchiwania kazań na kanale <a href="https://www.youtube.com/channel/UCBjOjcfzKhm_QkHWS9fy6Fw" target="_blank">Youtube KECh Pszczyna</a>.</p>
 	 
 	<p style="text-align: center;">"Szukajcie Pana, gdy się pozwala znaleźć, wzywajcie Go, dopóki jest blisko!" Księga Izajasza 66,5 Biblia Tysiąclecia</p>
 </div>
