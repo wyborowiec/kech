@@ -13,7 +13,7 @@
 	<itunes:author>KECH Pszczyna</itunes:author>
 	<itunes:owner>
 		<itunes:name>KECH Pszczyna</itunes:name>
-		<itunes:email>kontakt@pszczyna.kech.pll</itunes:email>
+		<itunes:email>kontakt@pszczyna.kech.pl</itunes:email>
 	</itunes:owner>	
 	<itunes:category text="Religion &amp; Spirituality">
 		<itunes:category text="Christianity" />
