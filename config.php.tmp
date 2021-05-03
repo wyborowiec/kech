@@ -2,5 +2,6 @@
 
 define("RECAPTCHA_V3_KEY", '');
 define("RECAPTCHA_V3_SECRET_KEY", '');
+define("GOOGLE_MAP_KEY", '');
 
 ?>

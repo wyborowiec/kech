@@ -51,7 +51,7 @@ if ($send) {
 		<p>Inspektor Danych Osobowych Kościoła Ewangelicznych Chrześcijan w RP<br/>E-mail: InspektorDanych@kech.pl</p>
 		<p><a href="http://www.pszczyna.kech.pl/wp-content/uploads/2018/05/Regulamin-ODO-w-KECh-16.04.2018.pdf">Regulamin ODO w KECh</a></p>
 		<p><a href="http://www.pszczyna.kech.pl/wp-content/uploads/2018/05/INSTRUKCJA-ODO-w-KECh.pdf">Instrukcja ODO w KECh</a></p>
-		<iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=pszczyna%20dworcowa%2020&key=AIzaSyDUtO9fwZ270mCi8FSJlU62k4HRbxCb8GM"></iframe>
+		<iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=pszczyna%20dworcowa%2020&key=<?php echo GOOGLE_MAP_KEY ?>"></iframe>
 	</div>
 	<div class="contact_form">
 		<h1>FORMULARZ KONTAKTOWY</h1>
