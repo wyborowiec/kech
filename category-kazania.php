@@ -19,7 +19,7 @@ get_header(); ?>
 	$query_args = array( 
 			'post_type' => 'kech_audio', 
 			'post_status'=> 'publish',
-			'posts_per_page' => 10,
+			'posts_per_page' => 200,
 			'paged' => $paged,
 			'order'		=> 'DESC',
 			'orderby'	=> 'meta_value',
@@ -33,14 +33,15 @@ get_header(); ?>
 	while ($query -> have_posts() ) : $query -> the_post();
 			$id = $post->ID;
 			$author = get_post_meta($id, "author", true);
-			$date = format_date(get_post_meta($id, "event_date", true));
+			$date = get_post_meta($id, "event_date", true);
 			
 			$matches = array();
 			$is_match = preg_match('/\[audio.*mp3="(.*)".*\]/', $post->post_content, $matches);
 			if ($is_match){
 				$audio_url = $matches[1];
+				//echo do_shortcode('$matches[0]');
 			} else {
-				die("Brak pliku audio");
+				die("No gallery found in the post content");
 			}
 	?>
 	<div class="kazania_list">
